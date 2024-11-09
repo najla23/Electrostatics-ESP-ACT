@@ -12,16 +12,16 @@ def run_one(qtype: str, suffix: str = "") -> dict:
     base_command = f"alexandria train_ff -v -mp {molprops} -nooptimize -g {log_filename}"
 
     suffix_commands = {
-        "1": " -sel ../Selection/ac-train.dat -ff ../FF/coul-p.xml -fc_elec 1",
-        "2": " -sel ../Selection/ac-test.dat -ff ../FF/coul-p.xml -fc_elec 1",
-        "3": " -sel ../Selection/ac-train.dat -ff ../FF/all-p.xml -fc_elec 1",
-        "4": " -sel ../Selection/ac-test.dat -ff ../FF/all-p.xml -fc_elec 1",
-        "5": " -sel ../Selection/ac-train.dat -ff ../FF/coul-g.xml -fc_elec 1",
-        "6": " -sel ../Selection/ac-test.dat -ff ../FF/coul-g.xml -fc_elec 1",
-        "7": " -sel ../Selection/ac-train.dat -ff ../FF/all-g.xml -fc_elec 1",
-        "8": " -sel ../Selection/ac-test.dat -ff ../FF/all-g.xml -fc_elec 1",
-        "9": " -sel ../Selection/ac-train.dat -ff ../FF/all-pg.xml -fc_elec 1",
-        "10": " -sel ../Selection/ac-test.dat -ff ../FF/all-pg.xml -fc_elec 1"
+        "1": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/coul-p.xml -fc_elec 1",
+        "2": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/coul-p.xml -fc_elec 1",
+        "3": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-p.xml -fc_elec 1",
+        "4": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-p.xml -fc_elec 1",
+        "5": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/coul-g.xml -fc_elec 1",
+        "6": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/coul-g.xml -fc_elec 1",
+        "7": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-g.xml -fc_elec 1",
+        "8": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-g.xml -fc_elec 1",
+        "9": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1",
+        "10": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1"
     }
 
     suffix_commands2 = {
@@ -33,7 +33,7 @@ def run_one(qtype: str, suffix: str = "") -> dict:
         print(f"Running command for {qtype}{suffix} - COUL")
         run_command(base_command + suffix_commands[suffix])
     elif qtype != "qACM" and suffix in suffix_commands2:
-        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../FF/esp-paper-gaussian.xml -fc_elec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
+        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_elec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
 
     print(f"Reading log file {log_filename} for COUL")
     mydict = {"COUL": {}, "ALLELEC": {}}
@@ -52,7 +52,7 @@ def run_one(qtype: str, suffix: str = "") -> dict:
         print(f"Running command for {qtype}{suffix} - ALLELEC")
         run_command(base_command + suffix_commands[suffix].replace("-fc_elec", "-fc_allelec"))
     elif qtype != "qACM" and suffix in suffix_commands2:
-        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../FF/esp-paper-gaussian.xml -fc_allelec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
+        run_command(base_command + suffix_commands2[suffix]+ f"-charges ../AlexandriaFF/esp-paper-gaussian.xml -fc_allelec 1  -ff ../ForceFields/GAFF.xml -qtype {qtype} ")
 
     print(f"Reading log file {log_filename} for ALLELEC")
     with open(log_filename, "r") as inf:
