@@ -1,0 +1,101 @@
+{
+    "Li-F": {
+        "rmin": 1.564,
+        "total-SAPT": -756.98,
+        "total-CT": -595.24,
+        "total-Walz2018a": -785.32,
+        "eelec-Walz2018a": -878.2,
+        "eelec-SAPT": -849.6,
+        "eelec-CT": -888.3,
+        "eelec-ACT-S": -867.39,
+        "eelec-ACT-G": -814.00
+    },
+    "Li-Cl": {
+        "rmin": 2.021,
+        "total-SAPT": -634.44,
+        "total-CT": -630.27,
+        "total-Walz2018a": -643.30,
+        "eelec-Walz2018a": -687.0,
+        "eelec-SAPT": -657.1,
+        "eelec-CT": -687.5,
+        "eelec-ACT-S": -662.65,
+        "eelec-ACT-G": -623.09
+    },
+    "Li-Br": {
+        "rmin": 2.17,
+        "total-SAPT": -603.25,
+        "total-CT": -601.97,
+        "total-Walz2018a": -612.46,
+        "eelec-Walz2018a": -640.0,
+        "eelec-SAPT": -608.1,
+        "eelec-CT": -640.3,
+        "eelec-ACT-S": -611.38,
+        "eelec-ACT-G": -583.98
+    },
+    "Na-F": {
+        "rmin": 1.926,
+        "total-SAPT": -624.77,
+        "total-CT": -348.68,
+        "total-Walz2018a": -681.20,
+        "eelec-Walz2018a": -717.3,
+        "eelec-SAPT": -749.2,
+        "eelec-CT": -721.4,
+        "eelec-ACT-S": -747.31,
+        "eelec-ACT-G": -746.71
+    },
+    "Na-Cl": {
+        "rmin": 2.361,
+        "total-SAPT": -538.18,
+        "total-CT": -448.55,
+        "total-Walz2018a": -567.65,
+        "eelec-Walz2018a": -588.2,
+        "eelec-SAPT": -606.9,
+        "eelec-CT": -588.5,
+        "eelec-ACT-S": -608.17,
+        "eelec-ACT-G": -596.90
+    },
+    "Na-Br": {
+        "rmin": 2.502,
+        "total-SAPT": -515.94,
+        "total-CT": -447.00,
+        "total-Walz2018a": -542.89,
+        "eelec-Walz2018a": -555.1,
+        "eelec-SAPT": -569.4,
+        "eelec-CT": -555.3,
+        "eelec-ACT-S": -570.85,
+        "eelec-ACT-G": -561.72
+    },
+    "K-F": {
+        "rmin": 2.171,
+        "total-SAPT": -562.37,
+        "total-CT": -168.25,
+        "total-Walz2018a": -615.87,
+        "eelec-Walz2018a": -638.4,
+        "eelec-SAPT": -702.8,
+        "eelec-CT": -640.0,
+        "eelec-ACT-S": -691.66,
+        "eelec-ACT-G": -710.07
+    },
+    "K-Cl": {
+        "rmin": 2.667,
+        "total-SAPT": -476.48,
+        "total-CT": -342.90,
+        "total-Walz2018a": -505.56,
+        "eelec-Walz2018a": -520.8,
+        "eelec-SAPT": -558.7,
+        "eelec-CT": -520.9,
+        "eelec-ACT-S": -558.42,
+        "eelec-ACT-G": -558.36
+    },
+    "K-Br": {
+        "rmin": 2.821,
+        "total-SAPT": -455.26,
+        "total-CT": -352.17,
+        "total-Walz2018a": -482.43,
+        "eelec-Walz2018a": -492.4,
+        "eelec-SAPT": -524.2,
+        "eelec-CT": -492.5,
+        "eelec-ACT-S": -525.44,
+        "eelec-ACT-G": -525.71
+    }
+}
