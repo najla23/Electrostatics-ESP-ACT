@@ -7,7 +7,8 @@ Supporting information for reproducing results in the scientific article
 
 - `Analytical_Fitting/` - Analytical fitting for ESP
 - `Antechamber/` - Force field files 
-- `Charge_Models/` - Reproduction of Table 2
+- `Charge_Models/` - Reproduction of Table 2, Comparison of electrostatic energies from Alexandria and other popular charge models, e.g. ESP. Note that according to the definition of SAPT, we 
+   need the sum of electrostatic and induction energies from SAPT to obtain the correct electrostatic energy. 
 - `Database/` - Database for training 
 - `ESP_Alkali_Halides/` - ESP fitting and electrostatic calculations for different charge models, e.g. a (positive) point charge with either one Gaussian or 1S Slater distributed charge, or a 
    point charge with two Gaussian charges or a point charge with a 1S and a 2S Slater charge.
