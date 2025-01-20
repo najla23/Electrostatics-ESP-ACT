@@ -70679,7 +70679,7 @@
   </molecule>
   <molecule molname="lithium">
     <fragments>
-      <fragment identifier="InChI=1S/Li/q-1" mass="6.941" charge="1" multiplicity="1" symmetry_number="1" formula="Li"> 1</fragment>
+      <fragment identifier="InChI=1S/Li/q+1" mass="6.941" charge="1" multiplicity="1" symmetry_number="1" formula="Li"> 1</fragment>
     </fragments>
     <molinfo iupac="lithium" cas="" cid="" inchi=""/>
     <experiment datasource="Theory" reference="Spoel2022a" conformation="minimum" program="Gaussian 16, Revision C.01" method="HF" basisset="aug-cc-pvtz" jobtype="Opt" datafile="lithium-ion-19-oep.log">
@@ -88378,7 +88378,7 @@
   </molecule>
   <molecule molname="potassium">
     <fragments>
-      <fragment identifier="InChI=1S/K/q-1" mass="39.0983" charge="1" multiplicity="1" symmetry_number="1" formula="K"> 1</fragment>
+      <fragment identifier="InChI=1S/K/q+1" mass="39.0983" charge="1" multiplicity="1" symmetry_number="1" formula="K"> 1</fragment>
     </fragments>
     <molinfo iupac="potassium" cas="" cid="" inchi=""/>
     <experiment datasource="Theory" reference="Spoel2022a" conformation="minimum" program="Gaussian 16, Revision C.01" method="HF" basisset="aug-cc-pvtz" jobtype="Opt" datafile="potassium-ion-19-oep.log">
@@ -88401,7 +88401,7 @@
   </molecule>
   <molecule molname="sodium">
     <fragments>
-      <fragment identifier="InChI=1S/Na/q-1" mass="22.9898" charge="1" multiplicity="1" symmetry_number="1" formula="Na"> 1</fragment>
+      <fragment identifier="InChI=1S/Na/q+1" mass="22.9898" charge="1" multiplicity="1" symmetry_number="1" formula="Na"> 1</fragment>
     </fragments>
     <molinfo iupac="sodium" cas="" cid="" inchi=""/>
     <experiment datasource="Theory" reference="Spoel2022a" conformation="minimum" program="Gaussian 16, Revision C.01" method="HF" basisset="aug-cc-pvtz" jobtype="Opt" datafile="sodium-ion-19-oep.log">
