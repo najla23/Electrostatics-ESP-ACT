@@ -18,8 +18,8 @@ dimers = [
     "lithium#sodium", "bromide#fluoride", "bromide#chloride", "water#chloride", "water#fluoride",
     "water#sodium", "ethylammonium#methylammonium", "sodium#potassium", "formate#sodium", "formate#lithium",
     "acetate#acetate", "acetate#bromide", "methylammonium#formate", "methylammonium#acetate", "ammonium#chloride",
-    "ammonium#fluoride", "ammonium#formate", "ethylammonium#fluoride", "ethylammonium#formate", "lithium#litium",
-    "fluoride#fluoride", "lithium#fluoride", "sodium#potassium", "ammonium#potassium", "ethylammonium#lithium",
+    "ammonium#fluoride", "ammonium#formate", "ethylammonium#fluoride", "ethylammonium#formate", "lithium#lithium",
+    "fluoride#fluoride", "lithium#fluoride",  "ammonium#potassium", "ethylammonium#lithium",
     "ethylammonium#sodium", "formate#fluoride", "formate#bromide", "methylammonium#potassium", "potassium#fluoride",
     "sodium#bromide", "lithium#chloride", "lithium#potassium", "ammonium#ethylammonium", "formate#acetate",
     "ammonium#methylammonium"
