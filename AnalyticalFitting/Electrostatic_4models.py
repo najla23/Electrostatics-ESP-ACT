@@ -110,6 +110,7 @@ def main():
                        axes[i].tick_params(axis='y', labelsize=8)
                        axes[i].legend(fontsize=12)
                        plt.tight_layout()
+                       plt.subplots_adjust(hspace=0)
                        plt.savefig(f'SAPT_{anion}_{cation}_{T}.pdf')
 
 
