@@ -11,7 +11,7 @@ from potential_elec_functions import *
 T=100 #delta z= 0.01
 
 def main():
-   with open(f'params_4_{T}.json', 'r') as json_f:
+   with open(f'../AnalyticalFitting/params_4_{T}.json', 'r') as json_f:
        params = json.load(json_f)
 
 

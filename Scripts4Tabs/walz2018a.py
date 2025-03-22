@@ -29,7 +29,7 @@ def gauss(distance:float, z1:float, z2:float)->float:
     return one_4pi_eps0*math.erf(zeta*distance)/distance
     
 def print_walz(outf):
-    with open('params_4.json', 'r') as json_f:
+    with open('../AnalyticalFitting/params_4.json', 'r') as json_f:
         params = json.load(json_f)
 
     for rm in sapt.keys():

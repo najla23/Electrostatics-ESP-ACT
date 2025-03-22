@@ -2,9 +2,7 @@
 
 import json, math
 import numpy as np
-from Electrostatic_4models import Point_core_1slater_2slater_shell
-
-from Electrostatic_4models import Point_core_1slater_shell
+from potential_elec_functions import Point_core_1slater_2slater_shell, Point_core_1slater_shell
 
 one_4pi_eps0 = 1389.3544561  #1389
 
@@ -42,11 +40,11 @@ def mse(ref_values, values):
 
 
 def print_walz(outf):
-    with open('params_4_10.json', 'r') as json_f:
+    with open('../AnalyticalFitting/params_4_10.json', 'r') as json_f:
         params = json.load(json_f)
 
 
-    with open('params_4_100.json', 'r') as json_f0:
+    with open('../AnalyticalFitting/params_4_100.json', 'r') as json_f0:
         params0 = json.load(json_f0)
 
 

@@ -11,7 +11,7 @@ from potential_elec_functions import *
 T=100 #delta z= 0.01
 
 
-def main():
+def doit(T:int):
 
         def Point_core_1slater_shell_charge(distance, q_c, z2):
             q_s = charge - q_c
@@ -108,8 +108,8 @@ def main():
 
         #inputs from json file
         K=1389
-        data = output_data['data']
-        charge=output_data['charge']
+        data   = output_data['data']
+        charge = None
         initial_guesses = output_data['initial_guesses']
         bounds = output_data['bounds']
 
@@ -127,9 +127,10 @@ def main():
 
             if compound=='F' or compound=='Cl' or compound=='Br' or compound=='I':
                 charge=-1
-
-            if compound=='Li' or compound=='Na' or compound=='K':
+            elif compound=='Li' or compound=='Na' or compound=='K':
                 charge=1
+            else:
+                sys.exit("Unknown compound %s" % compound)
 
             for func_index, func in enumerate(functions):
 
@@ -149,36 +150,26 @@ def main():
                 if func_index == 0 or func_index == 1:
                     q_c_opt, z2_opt = popt
                     q_s_opt = charge - q_c_opt
-                    params[f"q_c_{compound}_{func_index}"], params[f"q_s_{compound}_{func_index}"], \
-                    params[f"z2_{compound}_{func_index}"]= q_c_opt.tolist(), q_s_opt.tolist(), z2_opt.tolist()
+                    params[f"q_c_{compound}_{func_index}"] = q_c_opt
+                    params[f"q_s_{compound}_{func_index}"] = q_s_opt
+                    params[f"z2_{compound}_{func_index}"]  = z2_opt
+
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
                     print(f"{compound} & {charge_model} &  {q_c_opt:.2f} &  {q_s_opt:.2f} & - &  {z2_opt*10:.2f} & -  & {rmse:.2f} \\\\")
-
 
                 elif func_index == 2 or func_index == 3:
                     q_c_opt, q_s2_opt, z1_opt, z2_opt = popt
                     q_s1_opt = charge - q_c_opt - q_s2_opt
 
+                    params[f"q_c_{compound}_{func_index}"]  = q_c_opt
+                    params[f"q_s1_{compound}_{func_index}"] = q_s1_opt
+                    params[f"q_s2_{compound}_{func_index}"] = q_s2_opt
+                    params[f"z1_{compound}_{func_index}"]   = z1_opt
+                    params[f"z2_{compound}_{func_index}"]   = z2_opt
 
-                    params[f"q_c_{compound}_{func_index}"], params[f"q_s1_{compound}_{func_index}"], params[f"q_s2_{compound}_{func_index}"], \
-                    params[f"z1_{compound}_{func_index}"], params[f"z2_{compound}_{func_index}"] = q_c_opt.tolist(), q_s1_opt.tolist(), \
-                    q_s2_opt.tolist(), z1_opt.tolist(), z2_opt.tolist()
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
                     print(f"{compound} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt*10:.2f} & {z2_opt*10:.2f} & {rmse:.2f} \\\\")
 
-
-                # if i == 0:
-                #     label = f' {compound}'
-                # elif i == 1:
-                #     label = f' {compound}'
-                # elif i == 2:
-                #     label = f' {compound}'
-                # elif i == 3:
-                #     label = f' {compound}'
-                # elif i == 4:
-                #     label = f' {compound}'
-                # elif i == 5:
-                #     label = f' {compound}'
 
                 label = f' {compound}'
                 axes = [axes1, axes2, axes3, axes4, axes5, axes6]
@@ -203,4 +194,5 @@ def main():
         plt.show()
 
 if __name__ == "__main__":
-    main()
+    for T in [ 10, 100 ]:
+            doit(T)
