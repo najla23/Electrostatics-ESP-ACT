@@ -2,18 +2,16 @@
 
 import json, math
 import numpy as np
-from potential_elec_functions import Point_core_1slater_2slater_shell, Point_core_1slater_shell
-
-one_4pi_eps0 = 1389.3544561  #1389
+from potential_elec_functions import Point_core_1slater_2slater_shell, Point_core_1slater_shell, Point_core_2gaussian_shell, one_4pi_eps0
 
 sapt = {
     "Li-F":  { "rmin": 1.564, "eelec":  -867.15},
     "Li-Cl": { "rmin": 2.021, "eelec":  -661.43},
-    "Li-Br": { "rmin": 2.17, "eelec":   -612.35},
-    "Na-F":  { "rmin":1.926, "eelec":   -748.97},
+    "Li-Br": { "rmin": 2.17,  "eelec":  -612.35},
+    "Na-F":  { "rmin": 1.926, "eelec":  -748.97},
     "Na-Cl": { "rmin": 2.361, "eelec":  -607.68},
     "Na-Br": { "rmin": 2.502, "eelec":  -572.36},
-    "K-F":   { "rmin":2.171, "eelec":   -704.64},
+    "K-F":   { "rmin": 2.171, "eelec":  -704.64},
     "K-Cl":  { "rmin": 2.667, "eelec":  -566.07},
     "K-Br":  { "rmin": 2.821, "eelec":  -535.34}, }
 
@@ -39,7 +37,7 @@ def mse(ref_values, values):
 
 
 
-def print_walz(outf):
+def print_walz(outf, slater:bool):
     with open('../AnalyticalFitting/params_4_10.json', 'r') as json_f:
         params = json.load(json_f)
 
@@ -69,17 +67,27 @@ def print_walz(outf):
         # q_c_na, q_s1_na, q_s2_na, q_c_cl, q_s1_cl, q_s2_cl, z_c_na, z_c_cl, z_s_na, z_s_cl):
 
         #(distances, q_c_na, q_s_na, q_c_cl, q_s_cl, z_na, z_cl)
-        [eesp]  = Point_core_1slater_2slater_shell([rrr],
-                                                   params[a1]["q_c_3"], params[a1]["q_s1_3"], params[a1]["q_s2_3"],
-                                                   params[a2]["q_c_3"], params[a2]["q_s1_3"], params[a2]["q_s2_3"],
-                                                   params[a1]["z1_3"], params[a2]["z1_3"], 
-                                                   params[a1]["z2_3"], params[a2]["z2_3"])
+        if slater:
+            myfunc = Point_core_1slater_2slater_shell
+        else:
+            myfunc = Point_core_2gaussian_shell
+        if not "q_c_3" in params[a1]:
+            print("No parameters for compound %s" % a1)
+            continue
+        if not "q_c_3" in params[a2]:
+            print("No parameters for compound %s" % a2)
+            continue
+        [eesp]  = myfunc([rrr],
+                         params[a1]["q_c_3"], params[a1]["q_s1_3"], params[a1]["q_s2_3"],
+                         params[a2]["q_c_3"], params[a2]["q_s1_3"], params[a2]["q_s2_3"],
+                         params[a1]["z1_3"], params[a2]["z1_3"],
+                         params[a1]["z2_3"], params[a2]["z2_3"])
 
-        [eesp0]  = Point_core_1slater_2slater_shell([rrr],
-                                                    params0[a1]["q_c_3"], params0[a1]["q_s1_3"], params0[a1]["q_s2_3"],
-                                                    params0[a2]["q_c_3"], params0[a2]["q_s1_3"], params0[a2]["q_s2_3"],
-                                                    params0[a1]["z1_3"], params0[a2]["z1_3"],
-                                                    params0[a1]["z2_3"], params0[a2]["z2_3"])
+        [eesp0]  = myfunc([rrr],
+                          params0[a1]["q_c_3"], params0[a1]["q_s1_3"], params0[a1]["q_s2_3"],
+                          params0[a2]["q_c_3"], params0[a2]["q_s1_3"], params0[a2]["q_s2_3"],
+                          params0[a1]["z1_3"], params0[a2]["z1_3"],
+                          params0[a1]["z2_3"], params0[a2]["z2_3"])
 
         epc   = -one_4pi_eps0/rrr
         outf.write("%s & %g & %.1f & %.1f & %.1f & %.1f \\\\\n" % ( rm, rrr, sapt[rm]["eelec"], epc, eesp, eesp0) )
@@ -108,25 +116,23 @@ def print_walz(outf):
     outf.write("%s & & & %.1f & %.1f & %.1f \\\\\n" % ( "MSE", mean_mse_epc, mean_mse_eesp, mean_mse_eesp0) )
 
 if __name__ == "__main__":
+
     filename = "electable.tex"
     with open(filename, "w") as outf:
         outf.write("""\\begin{table}
-        \\centering
-        \\caption{Electrostatic energies from SAPT at the experimental minimum energy distance~\cite{NISTa}  and corresponding energy of two point charges. The
-        SAPT0~\cite{Sherill2013a} level of theory was applied and the total Electrostatics energy is reported. Point charge (PC) energy follows
-        from Coulomb's law. ESP indicates model consisting of a point charge, a 1S Slater distribution, and a 2S Slater distribution, fitted to the
-electrostatic potential from 0.0 (ESP$_0$) or 2.0 (ESP$_{vdw}$) to 4.5 {\AA}.}
-            \\label{tab:sapt}
-        \\begin{tabular}{lccccc}
-        \\hline
-        Ion pair & r$_{min}$ & \\multicolumn{4}{c}{E$_{elec}$ (kJ/mol)}\\\\
-        & ({\\AA})&                 SAPT & PC & ESP$_{vdw}$ & ESP$_0$\\\\
-        \\hline
-        """)
-        print_walz(outf)
+\\centering
+\\caption{Electrostatic energies from SAPT at the experimental minimum energy distance~\cite{NISTa}  and corresponding energy of two point charges. The SAPT0~\cite{Sherill2013a} level of theory was applied and the total Electrostatics energy is reported. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, a 1S Slater distribution, and a 2S Slater distribution, fitted to the electrostatic potential from 0.0 (ESP$_0$) or 2.0 (ESP$_{vdw}$) to 4.5 {\AA}.}
+\\label{tab:sapt}
+\\begin{tabular}{lccccc}
+\\hline
+Ion pair & r$_{min}$ & \\multicolumn{4}{c}{E$_{elec}$ (kJ/mol)}\\\\
+& ({\\AA})&                 SAPT & PC & ESP$_{vdw}$ & ESP$_0$\\\\
+\\hline
+""")
+        print_walz(outf, True)
         outf.write("""\\hline
-    \\end{tabular}
-    \\end{table}
-    """)
+\\end{tabular}
+\\end{table}
+""")
 
     print("Output written to %s" % filename)

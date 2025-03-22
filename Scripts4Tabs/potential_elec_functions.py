@@ -1,7 +1,8 @@
 import numpy as np
 import math
 
-K=1389
+one_4pi_eps0 = 1389.3544561
+
 
 def slater2_charge(distance, alpha):
     if 0 == distance:
@@ -147,7 +148,7 @@ def Point_core_1slater_shell(distances, q_c_na, q_s_na, q_c_cl, q_s_cl, z_na, z_
     for i in range(len(distances)):
 
         energy.append(
-            K * (
+            one_4pi_eps0 * (
                 (q_c_na * q_c_cl / distances[i] ) +
                 (q_s_na*q_s_cl*(calculate_energy_shellshell(distances[i], z_cl*distances[i], z_na*distances[i])) ) +
                 (q_s_cl*q_c_na * slater_core_shell_potential(distances[i], z_cl)) +
@@ -167,7 +168,7 @@ def Point_core_1slater_2slater_shell(distances,
     for i in range(len(distances)):
 
         energy.append(
-            K * (
+            one_4pi_eps0 * (
                  (q_c_na * q_c_cl / distances[i] ) +
 
                  (q_s1_cl*q_c_na * slater_core_shell_potential(distances[i], z_c_cl)) +
@@ -195,7 +196,7 @@ def Point_core_2gaussian_shell(distances, q_c_na, q_s1_na, q_s2_na, q_c_cl, q_s1
     for i in range(len(distances)):
 
         energy.append(
-             (K *
+             (one_4pi_eps0 *
                 ((q_c_na * q_c_cl / distances[i])  +
                 (gaussian_shellshell(distances[i], q_s1_cl, q_s1_na, z1_cl, z1_na)) +
                 (gaussian_shellshell(distances[i], q_s2_cl, q_s2_na, z2_cl, z2_na)) +
@@ -219,7 +220,7 @@ def Point_core_gaussian_shell(distances, q_c_na, q_s1_na, q_c_cl, q_s1_cl, z1_na
     for i in range(len(distances)):
 
         energy.append(
-             K *
+             one_4pi_eps0 *
                 (  (q_c_na * q_c_cl / distances[i]) +
                 (gaussian_shellshell(distances[i], q_s1_cl, q_s1_na, z1_cl, z1_na)) +
 

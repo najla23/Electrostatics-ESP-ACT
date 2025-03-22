@@ -17,7 +17,7 @@ def doit(T:int):
                         S = q_s*z2
                 else:
                         S =  (q_c / distance[i] + q_s * slater_charge(distance[i], z2))
-                fit_potential.append(K * S)
+                fit_potential.append(one_4pi_eps0 * S)
             return fit_potential
 
 
@@ -29,7 +29,7 @@ def doit(T:int):
                             S = q_s1 * z1 + q_s2 * z2/2
                     else:
                             S = (q_c/ distance[i] + q_s1*slater_charge(distance[i], z1)+q_s2*slater2_charge(distance[i], z2) )
-                    fit_potential.append(K * S)
+                    fit_potential.append(one_4pi_eps0 * S)
             return fit_potential
 
 
@@ -42,7 +42,7 @@ def doit(T:int):
                     else:
                             erf2 = math.erf(distance[i] * z2)
                             S = (q_c / distance[i] + q_s * erf2 / distance[i])
-                    fit_potential.append(K * S)
+                    fit_potential.append(one_4pi_eps0 * S)
             return fit_potential
 
 
@@ -57,7 +57,7 @@ def doit(T:int):
                     erf2 = math.erf(distance[i] * z2)
                     #erf = math.erf(distance[i] * z1 * z2 / (z1**2 + z2**2)**0.5)
                     S = (q_c / distance[i] + q_s1 * erf1 / distance[i]+ q_s2 * erf2 / distance[i])
-                fit_potential.append(K * S)
+                fit_potential.append(one_4pi_eps0 * S)
             return fit_potential
 
 
@@ -103,7 +103,6 @@ def doit(T:int):
 
 
         #inputs from json file
-        K=1389
         data   = output_data['data']
         charge = None
         initial_guesses = output_data['initial_guesses']
@@ -130,11 +129,14 @@ def doit(T:int):
 
             for func_index, func in enumerate(functions):
 
-
-                popt, pcov = curve_fit(func, distance_data, potential_data,
-                                       p0=initial_guesses[compound][func_index],
-                                       bounds=bounds[compound][func_index],
-                                       maxfev=10000)
+                try:
+                        popt, pcov = curve_fit(func, distance_data, potential_data,
+                                               p0=initial_guesses[compound][func_index],
+                                               bounds=bounds[compound][func_index],
+                                               maxfev=10000)
+                except:
+                        print("Failed to do the curve_fit for compound %s func %d" % ( compound, func_index ))
+                        continue
 
                 charge_model = charge_models[ChargeModel(func_index)]
                 param_names = parameter_names[ChargeModel(func_index)]
@@ -179,7 +181,7 @@ def doit(T:int):
                 axes[5].set_xlabel(f'Distance ($\AA$)', fontsize=18)
                 axes[5].tick_params(axis='x', labelsize=14)
                 for ix in range(6):
-                        axes[i].tick_params(axis='y', labelsize=14)
+                        axes[ix].tick_params(axis='y', labelsize=14)
             all_params[compound] = params
             print()
 
