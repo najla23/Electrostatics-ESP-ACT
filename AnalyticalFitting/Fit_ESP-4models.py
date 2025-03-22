@@ -168,12 +168,18 @@ def doit(T:int):
 
 
                 label = f' {compound}'
+                if charge == -1:
+                        label += "-"
+                else:
+                        label += "+"
                 axes = [axes1, axes2, axes3, axes4, axes5, axes6]
                 axes[i].plot(np.array(distance_data), np.array(charge_model_compound)-np.array(potential_data), label=f'{charge_model}')
                 axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=18)
-                axes[2].set_ylabel('Residual electrostatic potential (kJ/mol e)')
-                axes[5].set_xlabel(f'Distance ($\AA$)')
-
+                axes[2].set_ylabel('Residual electrostatic potential (kJ/mol e)', fontsize=18)
+                axes[5].set_xlabel(f'Distance ($\AA$)', fontsize=18)
+                axes[5].tick_params(axis='x', labelsize=14)
+                for ix in range(6):
+                        axes[i].tick_params(axis='y', labelsize=14)
             all_params[compound] = params
             print()
 
