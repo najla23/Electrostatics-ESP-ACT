@@ -194,5 +194,5 @@ def doit(T:int):
         plt.show()
 
 if __name__ == "__main__":
-    for T in [ 10, 100 ]:
+    for T in [ 100, 10 ]:
             doit(T)
