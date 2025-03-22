@@ -70,16 +70,16 @@ def print_walz(outf):
 
         #(distances, q_c_na, q_s_na, q_c_cl, q_s_cl, z_na, z_cl)
         [eesp]  = Point_core_1slater_2slater_shell([rrr],
-                                                   params[a1]["q_c_"+a1+"_3"], params[a1]["q_s1_"+a1+"_3"], params[a1]["q_s2_"+a1+"_3"],
-                                                   params[a2]["q_c_"+a2+"_3"], params[a2]["q_s1_"+a2+"_3"], params[a2]["q_s2_"+a2+"_3"],
-                                                   params[a1]["z1_"+a1+"_3"], params[a2]["z1_"+a2+"_3"], 
-                                                   params[a1]["z2_"+a1+"_3"], params[a2]["z2_"+a2+"_3"])
+                                                   params[a1]["q_c_3"], params[a1]["q_s1_3"], params[a1]["q_s2_3"],
+                                                   params[a2]["q_c_3"], params[a2]["q_s1_3"], params[a2]["q_s2_3"],
+                                                   params[a1]["z1_3"], params[a2]["z1_3"], 
+                                                   params[a1]["z2_3"], params[a2]["z2_3"])
 
         [eesp0]  = Point_core_1slater_2slater_shell([rrr],
-                                                   params0[a1]["q_c_"+a1+"_3"], params0[a1]["q_s1_"+a1+"_3"], params0[a1]["q_s2_"+a1+"_3"],
-                                                   params0[a2]["q_c_"+a2+"_3"], params0[a2]["q_s1_"+a2+"_3"], params0[a2]["q_s2_"+a2+"_3"],
-                                                   params0[a1]["z1_"+a1+"_3"], params0[a2]["z1_"+a2+"_3"],
-                                                   params0[a1]["z2_"+a1+"_3"], params0[a2]["z2_"+a2+"_3"])
+                                                    params0[a1]["q_c_3"], params0[a1]["q_s1_3"], params0[a1]["q_s2_3"],
+                                                    params0[a2]["q_c_3"], params0[a2]["q_s1_3"], params0[a2]["q_s2_3"],
+                                                    params0[a1]["z1_3"], params0[a2]["z1_3"],
+                                                    params0[a1]["z2_3"], params0[a2]["z2_3"])
 
         epc   = -one_4pi_eps0/rrr
         outf.write("%s & %g & %.1f & %.1f & %.1f & %.1f \\\\\n" % ( rm, rrr, sapt[rm]["eelec"], epc, eesp, eesp0) )

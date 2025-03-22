@@ -150,9 +150,9 @@ def doit(T:int):
                 if func_index == 0 or func_index == 1:
                     q_c_opt, z2_opt = popt
                     q_s_opt = charge - q_c_opt
-                    params[f"q_c_{compound}_{func_index}"] = q_c_opt
-                    params[f"q_s_{compound}_{func_index}"] = q_s_opt
-                    params[f"z2_{compound}_{func_index}"]  = z2_opt
+                    params[f"q_c_{func_index}"] = q_c_opt
+                    params[f"q_s_{func_index}"] = q_s_opt
+                    params[f"z2_{func_index}"]  = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
                     print(f"{compound} & {charge_model} &  {q_c_opt:.2f} &  {q_s_opt:.2f} & - &  {z2_opt*10:.2f} & -  & {rmse:.2f} \\\\")
@@ -161,11 +161,11 @@ def doit(T:int):
                     q_c_opt, q_s2_opt, z1_opt, z2_opt = popt
                     q_s1_opt = charge - q_c_opt - q_s2_opt
 
-                    params[f"q_c_{compound}_{func_index}"]  = q_c_opt
-                    params[f"q_s1_{compound}_{func_index}"] = q_s1_opt
-                    params[f"q_s2_{compound}_{func_index}"] = q_s2_opt
-                    params[f"z1_{compound}_{func_index}"]   = z1_opt
-                    params[f"z2_{compound}_{func_index}"]   = z2_opt
+                    params[f"q_c_{func_index}"]  = q_c_opt
+                    params[f"q_s1_{func_index}"] = q_s1_opt
+                    params[f"q_s2_{func_index}"] = q_s2_opt
+                    params[f"z1_{func_index}"]   = z1_opt
+                    params[f"z2_{func_index}"]   = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
                     print(f"{compound} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt*10:.2f} & {z2_opt*10:.2f} & {rmse:.2f} \\\\")
