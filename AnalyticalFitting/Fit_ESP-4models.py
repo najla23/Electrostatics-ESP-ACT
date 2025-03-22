@@ -132,9 +132,9 @@ def doit(T:int):
 
 
                 popt, pcov = curve_fit(func, distance_data, potential_data,
-                                        p0=initial_guesses[compound][func_index],
-                                        bounds=bounds[compound][func_index],
-                                        maxfev=2000)
+                                       p0=initial_guesses[compound][func_index],
+                                       bounds=bounds[compound][func_index],
+                                       maxfev=10000)
 
                 charge_model = charge_models[ChargeModel(func_index)]
                 param_names = parameter_names[ChargeModel(func_index)]
@@ -142,6 +142,11 @@ def doit(T:int):
                 pcovs_compound.append(pcov)
                 charge_model_compound = func(distance_data, *popt)
 
+                label = f' {compound}'
+                if charge == -1:
+                        label += "-"
+                else:
+                        label += "+"
 
                 if func_index == 0 or func_index == 1:
                     q_c_opt, z2_opt = popt
@@ -151,7 +156,7 @@ def doit(T:int):
                     params[f"z2_{func_index}"]  = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{compound} & {charge_model} &  {q_c_opt:.2f} &  {q_s_opt:.2f} & - &  {z2_opt:.2f} & -  & {rmse:.2f} \\\\")
+                    print(f"{label} & {charge_model} &  {q_c_opt:.2f} &  {q_s_opt:.2f} & - &  {z2_opt:.2f} & -  & {rmse:.2f} \\\\")
 
                 elif func_index == 2 or func_index == 3:
                     q_c_opt, q_s2_opt, z1_opt, z2_opt = popt
@@ -164,14 +169,9 @@ def doit(T:int):
                     params[f"z2_{func_index}"]   = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{compound} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt:.2f} & {z2_opt:.2f} & {rmse:.2f} \\\\")
+                    print(f"{label} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt:.2f} & {z2_opt:.2f} & {rmse:.2f} \\\\")
 
 
-                label = f' {compound}'
-                if charge == -1:
-                        label += "-"
-                else:
-                        label += "+"
                 axes = [axes1, axes2, axes3, axes4, axes5, axes6]
                 axes[i].plot(np.array(distance_data), np.array(charge_model_compound)-np.array(potential_data), label=f'{charge_model}')
                 axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=18)
