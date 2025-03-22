@@ -162,7 +162,7 @@ def main():
 
                     params[f"q_c_{compound}_{func_index}"], params[f"q_s1_{compound}_{func_index}"], params[f"q_s2_{compound}_{func_index}"], \
                     params[f"z1_{compound}_{func_index}"], params[f"z2_{compound}_{func_index}"] = q_c_opt.tolist(), q_s1_opt.tolist(), \
-                    q_s2_opt.tolist(), z2_opt.tolist(), z1_opt.tolist()
+                    q_s2_opt.tolist(), z1_opt.tolist(), z2_opt.tolist()
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
                     print(f"{compound} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt*10:.2f} & {z2_opt*10:.2f} & {rmse:.2f} \\\\")
 
