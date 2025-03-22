@@ -183,8 +183,8 @@ def main():
                 label = f' {compound}'
                 axes = [axes1, axes2, axes3, axes4, axes5, axes6]
                 axes[i].plot(np.array(distance_data), np.array(charge_model_compound)-np.array(potential_data), label=f'{charge_model}')
-                axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=12)
-                axes[2].set_ylabel('CM-ESP (kJ/mol e)')
+                axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=18)
+                axes[2].set_ylabel('Residual electrostatic potential (kJ/mol e)')
                 axes[5].set_xlabel(f'Distance ($\AA$)')
 
             all_params[compound] = params
@@ -195,8 +195,9 @@ def main():
              json.dump(all_params, json_f, indent=4)
              json_f.write('\n')
 
-        axes1.legend(bbox_to_anchor=(.05, .95), loc='upper left',fontsize=8)
+        axes1.legend(bbox_to_anchor=(.05, .95), loc='upper left',fontsize=14)
         plt.tight_layout()
+        plt.subplots_adjust(hspace=0)
 
         plt.savefig('Fit-Alkali_Halides.pdf')
         plt.show()
