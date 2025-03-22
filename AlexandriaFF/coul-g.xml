@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE alexandria_chemistry.dtd PUBLIC "alexandria_chemistry.dtd" "alexandria_chemistry.dtd">
 <alexandria_chemistry>
-  <version checksum="595d6d8a49c151f4bfbd6e2f24d4f647" timestamp="2024-12-28 19:36:16"/>
+  <version checksum="2683769f2c2d64260e408098b4c404e2" timestamp="2025-02-24 00:42:46"/>
   <particletypes>
     <particletype identifier="Ar" type="Atom" description="ar">
       <option key="acmtype" value="ar_z"/>
@@ -1560,19 +1560,19 @@
       <parameter type="zeta" unit="1/nm" value="13" uncertainty="0" minimum="3" maximum="20" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Br-_z">
-      <parameter type="zeta" unit="1/nm" value="6.8548662160119" uncertainty="0" minimum="3" maximum="20" ntrain="8" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="6.623651199547" uncertainty="0" minimum="3" maximum="20" ntrain="10" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Ca2+_z">
       <parameter type="zeta" unit="1/nm" value="13" uncertainty="0" minimum="3" maximum="20" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Cl-_z">
-      <parameter type="zeta" unit="1/nm" value="9.8424733344408" uncertainty="0" minimum="3" maximum="20" ntrain="10" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="5.399889682369" uncertainty="0" minimum="3" maximum="20" ntrain="11" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Cs+_z">
       <parameter type="zeta" unit="1/nm" value="13" uncertainty="0" minimum="3" maximum="20" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="F-_z">
-      <parameter type="zeta" unit="1/nm" value="19.620755402939" uncertainty="0" minimum="3" maximum="20" ntrain="5" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="7.2028846536093" uncertainty="0" minimum="3" maximum="20" ntrain="6" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="I-_z">
       <parameter type="zeta" unit="1/nm" value="13" uncertainty="0" minimum="3" maximum="20" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1581,7 +1581,7 @@
       <parameter type="zeta" unit="1/nm" value="20" uncertainty="0" minimum="3" maximum="20" ntrain="8" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Li+_z">
-      <parameter type="zeta" unit="1/nm" value="19.668272440546" uncertainty="0" minimum="3" maximum="20" ntrain="6" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="20" uncertainty="0" minimum="3" maximum="20" ntrain="6" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Mg2+_z">
       <parameter type="zeta" unit="1/nm" value="13" uncertainty="0" minimum="3" maximum="20" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1605,10 +1605,10 @@
       <parameter type="zeta" unit="1/nm" value="14" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="c2_z">
-      <parameter type="zeta" unit="1/nm" value="18.877245622261" uncertainty="0" minimum="3" maximum="24" ntrain="12" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="22.424481612126" uncertainty="0" minimum="3" maximum="24" ntrain="12" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="c3_z">
-      <parameter type="zeta" unit="1/nm" value="5.2445147922167" uncertainty="0" minimum="3" maximum="24" ntrain="30" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="5.2661072833294" uncertainty="0" minimum="3" maximum="24" ntrain="30" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="cl_z">
       <parameter type="zeta" unit="1/nm" value="13.5" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1617,10 +1617,10 @@
       <parameter type="zeta" unit="1/nm" value="16" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="h1_z">
-      <parameter type="zeta" unit="1/nm" value="23.641283827132" uncertainty="0" minimum="3" maximum="24" ntrain="41" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="24" uncertainty="0" minimum="3" maximum="24" ntrain="41" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="h2_z">
-      <parameter type="zeta" unit="1/nm" value="3" uncertainty="0" minimum="3" maximum="24" ntrain="5" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="8.477445664503" uncertainty="0" minimum="3" maximum="24" ntrain="5" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="h3_z">
       <parameter type="zeta" unit="1/nm" value="16" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1638,7 +1638,7 @@
       <parameter type="zeta" unit="1/nm" value="16" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="hc_z">
-      <parameter type="zeta" unit="1/nm" value="21.204491253562" uncertainty="0" minimum="3" maximum="24" ntrain="42" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="24" uncertainty="0" minimum="3" maximum="24" ntrain="42" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="hcl_z">
       <parameter type="zeta" unit="1/nm" value="16" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1653,7 +1653,7 @@
       <parameter type="zeta" unit="1/nm" value="16" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="hn_z">
-      <parameter type="zeta" unit="1/nm" value="23.847883973539" uncertainty="0" minimum="3" maximum="24" ntrain="76" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="23.986326616466" uncertainty="0" minimum="3" maximum="24" ntrain="76" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="ho_z">
       <parameter type="zeta" unit="1/nm" value="24" uncertainty="0" minimum="3" maximum="24" ntrain="26" mutability="Bounded" nonnegative="yes"/>
@@ -1680,7 +1680,7 @@
       <parameter type="zeta" unit="1/nm" value="14.5" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="n4_z">
-      <parameter type="zeta" unit="1/nm" value="7.0576794787688" uncertainty="0" minimum="3" maximum="24" ntrain="23" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="6.8962937855714" uncertainty="0" minimum="3" maximum="24" ntrain="23" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="ne_z">
       <parameter type="zeta" unit="1/nm" value="13" uncertainty="0" minimum="3" maximum="20" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1689,10 +1689,10 @@
       <parameter type="zeta" unit="1/nm" value="15" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="o2_z">
-      <parameter type="zeta" unit="1/nm" value="8.1773833146341" uncertainty="0" minimum="3" maximum="24" ntrain="24" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="7.6767632577138" uncertainty="0" minimum="3" maximum="24" ntrain="24" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="o3_z">
-      <parameter type="zeta" unit="1/nm" value="7.5455622150108" uncertainty="0" minimum="3" maximum="24" ntrain="13" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="zeta" unit="1/nm" value="8.5151852122371" uncertainty="0" minimum="3" maximum="24" ntrain="13" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="p1_z">
       <parameter type="zeta" unit="1/nm" value="15" uncertainty="0" minimum="3" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -1775,20 +1775,20 @@
       <parameter type="delta_eta" unit="eV/e" value="5" uncertainty="0" minimum="-8" maximum="20" ntrain="0" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c2_z:o2_z">
-      <parameter type="delta_chi" unit="eV" value="-4.127113842282" uncertainty="0" minimum="-8" maximum="8" ntrain="24" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="9.8380103465031" uncertainty="0" minimum="-8" maximum="20" ntrain="24" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="-8" uncertainty="0" minimum="-8" maximum="8" ntrain="24" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="4.4782989576696" uncertainty="0" minimum="-8" maximum="20" ntrain="24" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c2_z~c3_z">
-      <parameter type="delta_chi" unit="eV" value="-1.0982200137695" uncertainty="0" minimum="-8" maximum="8" ntrain="7" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="-2.9356254352962" uncertainty="0" minimum="-8" maximum="20" ntrain="7" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="4.5411077089535" uncertainty="0" minimum="-8" maximum="8" ntrain="7" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="-1.2170363122934" uncertainty="0" minimum="-8" maximum="20" ntrain="7" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c2_z~h1_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
       <parameter type="delta_eta" unit="eV/e" value="5" uncertainty="0" minimum="-8" maximum="20" ntrain="0" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c2_z~h2_z">
-      <parameter type="delta_chi" unit="eV" value="1.5913091627788" uncertainty="0" minimum="-8" maximum="8" ntrain="5" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="17.613117058462" uncertainty="0" minimum="-8" maximum="20" ntrain="5" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="2.4377706887774" uncertainty="0" minimum="-8" maximum="8" ntrain="5" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="16.867674785251" uncertainty="0" minimum="-8" maximum="20" ntrain="5" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c2_z~h3_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
@@ -1844,11 +1844,11 @@
     </parameterlist>
     <parameterlist identifier="c3_z~c3_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="0" maximum="0" ntrain="0" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="delta_eta" unit="eV/e" value="-0.8852496706205" uncertainty="0" minimum="-8" maximum="20" ntrain="7" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="1.883137506574" uncertainty="0" minimum="-8" maximum="20" ntrain="7" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c3_z~h1_z">
-      <parameter type="delta_chi" unit="eV" value="1.3532806292415" uncertainty="0" minimum="-8" maximum="8" ntrain="41" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="5.6531520148598" uncertainty="0" minimum="-8" maximum="20" ntrain="41" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="0.53030468496832" uncertainty="0" minimum="-8" maximum="8" ntrain="41" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="5.5735824515703" uncertainty="0" minimum="-8" maximum="20" ntrain="41" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c3_z~h2_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
@@ -1875,8 +1875,8 @@
       <parameter type="delta_eta" unit="eV/e" value="5" uncertainty="0" minimum="-8" maximum="20" ntrain="0" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c3_z~hc_z">
-      <parameter type="delta_chi" unit="eV" value="-0.52375880302071" uncertainty="0" minimum="-8" maximum="8" ntrain="42" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="-2.5478318071891" uncertainty="0" minimum="-8" maximum="20" ntrain="42" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="-0.41788598999152" uncertainty="0" minimum="-8" maximum="8" ntrain="42" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="-0.44655865807245" uncertainty="0" minimum="-8" maximum="20" ntrain="42" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c3_z~hcl_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
@@ -1907,8 +1907,8 @@
       <parameter type="delta_eta" unit="eV/e" value="5" uncertainty="0" minimum="-8" maximum="20" ntrain="0" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c3_z~n4_z">
-      <parameter type="delta_chi" unit="eV" value="4.0605113455833" uncertainty="0" minimum="-8" maximum="8" ntrain="16" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="1.9122847648472" uncertainty="0" minimum="-8" maximum="20" ntrain="16" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="-0.1833470898467" uncertainty="0" minimum="-8" maximum="8" ntrain="16" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="3.1402267675725" uncertainty="0" minimum="-8" maximum="20" ntrain="16" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="c3_z~o3_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
@@ -2051,8 +2051,8 @@
       <parameter type="delta_eta" unit="eV/e" value="5" uncertainty="0" minimum="-8" maximum="20" ntrain="0" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="hn_z~n4_z">
-      <parameter type="delta_chi" unit="eV" value="-4.265155013545" uncertainty="0" minimum="-8" maximum="8" ntrain="76" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="0.64548279551879" uncertainty="0" minimum="-8" maximum="20" ntrain="76" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="-1.3294966387719" uncertainty="0" minimum="-8" maximum="8" ntrain="76" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="-5.2564762943944" uncertainty="0" minimum="-8" maximum="20" ntrain="76" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="hn_z~o3_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
@@ -2067,8 +2067,8 @@
       <parameter type="delta_eta" unit="eV/e" value="5" uncertainty="0" minimum="-8" maximum="20" ntrain="0" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="ho_z~o3_z">
-      <parameter type="delta_chi" unit="eV" value="-3.630149655353" uncertainty="0" minimum="-8" maximum="8" ntrain="26" mutability="Bounded" nonnegative="no"/>
-      <parameter type="delta_eta" unit="eV/e" value="5.7807378142947" uncertainty="0" minimum="-8" maximum="20" ntrain="26" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_chi" unit="eV" value="-4.0630844624778" uncertainty="0" minimum="-8" maximum="8" ntrain="26" mutability="Bounded" nonnegative="no"/>
+      <parameter type="delta_eta" unit="eV/e" value="10.327948133412" uncertainty="0" minimum="-8" maximum="20" ntrain="26" mutability="Bounded" nonnegative="no"/>
     </parameterlist>
     <parameterlist identifier="hp_z~n2_z">
       <parameter type="delta_chi" unit="eV" value="0" uncertainty="0" minimum="-8" maximum="8" ntrain="0" mutability="Bounded" nonnegative="no"/>
@@ -2113,12 +2113,12 @@
       <parameter type="eta" unit="eV" value="15" uncertainty="0" minimum="6" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="c2_z">
-      <parameter type="chi" unit="eV" value="4" uncertainty="0" minimum="4" maximum="9" ntrain="12" mutability="Bounded" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="18.206309774446" uncertainty="0" minimum="6" maximum="24" ntrain="12" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="chi" unit="eV" value="5.4003239090731" uncertainty="0" minimum="4" maximum="9" ntrain="12" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="20.081107469535" uncertainty="0" minimum="6" maximum="24" ntrain="12" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="c3_z">
-      <parameter type="chi" unit="eV" value="5.2675902165217" uncertainty="0" minimum="4" maximum="9" ntrain="30" mutability="Bounded" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="24" uncertainty="0" minimum="6" maximum="24" ntrain="30" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="chi" unit="eV" value="8.865533516693" uncertainty="0" minimum="4" maximum="9" ntrain="30" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="13.846903580633" uncertainty="0" minimum="6" maximum="24" ntrain="30" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="cl_z">
       <parameter type="chi" unit="eV" value="6.5" uncertainty="0" minimum="4" maximum="9" ntrain="0" mutability="Bounded" nonnegative="yes"/>
@@ -2130,11 +2130,11 @@
     </parameterlist>
     <parameterlist identifier="h1_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="12.823854034447" uncertainty="0" minimum="6" maximum="24" ntrain="41" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="6.9662893904959" uncertainty="0" minimum="6" maximum="24" ntrain="41" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="h2_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="6.3657718826448" uncertainty="0" minimum="6" maximum="24" ntrain="5" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="6.5138290938705" uncertainty="0" minimum="6" maximum="24" ntrain="5" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="h3_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
@@ -2158,7 +2158,7 @@
     </parameterlist>
     <parameterlist identifier="hc_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="22.694943519226" uncertainty="0" minimum="6" maximum="24" ntrain="42" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="13.503222383269" uncertainty="0" minimum="6" maximum="24" ntrain="42" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="hcl_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
@@ -2178,11 +2178,11 @@
     </parameterlist>
     <parameterlist identifier="hn_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="15.844205850963" uncertainty="0" minimum="6" maximum="24" ntrain="76" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="11.442133857726" uncertainty="0" minimum="6" maximum="24" ntrain="76" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="ho_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="12.602111062343" uncertainty="0" minimum="6" maximum="24" ntrain="26" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="17.196882746364" uncertainty="0" minimum="6" maximum="24" ntrain="26" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="hp_z">
       <parameter type="chi" unit="eV" value="2" uncertainty="0" minimum="2" maximum="2" ntrain="1" mutability="Fixed" nonnegative="yes"/>
@@ -2213,7 +2213,7 @@
       <parameter type="eta" unit="eV" value="15" uncertainty="0" minimum="6" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="n4_z">
-      <parameter type="chi" unit="eV" value="4.0173618151053" uncertainty="0" minimum="4" maximum="9" ntrain="23" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="chi" unit="eV" value="6.0343931879999" uncertainty="0" minimum="4" maximum="9" ntrain="23" mutability="Bounded" nonnegative="yes"/>
       <parameter type="eta" unit="eV" value="24" uncertainty="0" minimum="6" maximum="24" ntrain="23" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="ne_z">
@@ -2225,12 +2225,12 @@
       <parameter type="eta" unit="eV" value="15" uncertainty="0" minimum="6" maximum="24" ntrain="0" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="o2_z">
-      <parameter type="chi" unit="eV" value="7.5777736480959" uncertainty="0" minimum="4" maximum="9" ntrain="24" mutability="Bounded" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="9.6543719446204" uncertainty="0" minimum="6" maximum="24" ntrain="24" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="chi" unit="eV" value="8.8503150114671" uncertainty="0" minimum="4" maximum="9" ntrain="24" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="19.488819376063" uncertainty="0" minimum="6" maximum="24" ntrain="24" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="o3_z">
-      <parameter type="chi" unit="eV" value="4.9541048072502" uncertainty="0" minimum="4" maximum="9" ntrain="13" mutability="Bounded" nonnegative="yes"/>
-      <parameter type="eta" unit="eV" value="16.895690452812" uncertainty="0" minimum="6" maximum="24" ntrain="13" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="chi" unit="eV" value="7.9109214265592" uncertainty="0" minimum="4" maximum="9" ntrain="13" mutability="Bounded" nonnegative="yes"/>
+      <parameter type="eta" unit="eV" value="19.956009469793" uncertainty="0" minimum="6" maximum="24" ntrain="13" mutability="Bounded" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="p1_z">
       <parameter type="chi" unit="eV" value="6.5" uncertainty="0" minimum="4" maximum="9" ntrain="0" mutability="Bounded" nonnegative="yes"/>
