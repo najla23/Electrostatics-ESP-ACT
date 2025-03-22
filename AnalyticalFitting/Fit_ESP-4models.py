@@ -7,10 +7,6 @@ import json
 from enum import Enum
 from potential_elec_functions import *
 
-
-T=100 #delta z= 0.01
-
-
 def doit(T:int):
 
         def Point_core_1slater_shell_charge(distance, q_c, z2):
@@ -155,7 +151,7 @@ def doit(T:int):
                     params[f"z2_{func_index}"]  = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{compound} & {charge_model} &  {q_c_opt:.2f} &  {q_s_opt:.2f} & - &  {z2_opt*10:.2f} & -  & {rmse:.2f} \\\\")
+                    print(f"{compound} & {charge_model} &  {q_c_opt:.2f} &  {q_s_opt:.2f} & - &  {z2_opt:.2f} & -  & {rmse:.2f} \\\\")
 
                 elif func_index == 2 or func_index == 3:
                     q_c_opt, q_s2_opt, z1_opt, z2_opt = popt
@@ -168,7 +164,7 @@ def doit(T:int):
                     params[f"z2_{func_index}"]   = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{compound} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt*10:.2f} & {z2_opt*10:.2f} & {rmse:.2f} \\\\")
+                    print(f"{compound} & {charge_model} & {q_c_opt:.2f} & {q_s1_opt:.2f} &  {q_s2_opt:.2f} & {z1_opt:.2f} & {z2_opt:.2f} & {rmse:.2f} \\\\")
 
 
                 label = f' {compound}'
@@ -190,7 +186,7 @@ def doit(T:int):
         plt.tight_layout()
         plt.subplots_adjust(hspace=0)
 
-        plt.savefig('Fit-Alkali_Halides.pdf')
+        plt.savefig('Fit-Alkali_Halides-%d.pdf' % T)
         plt.show()
 
 if __name__ == "__main__":
