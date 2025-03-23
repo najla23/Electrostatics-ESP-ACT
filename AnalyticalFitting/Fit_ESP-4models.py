@@ -152,7 +152,8 @@ def doit(T:int):
                             potential_data[d] -= one_4pi_eps0*charge/distance_data[d]
                     charge = 0
             for func_index, func in enumerate(functions):
-
+                if func_index == 4:
+                        continue
                 try:
                         if func_index < len(initial_guesses[compound]):
                                 myp0 = initial_guesses[compound][func_index]
