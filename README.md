@@ -1,4 +1,4 @@
-# SI-Accurate-Electrostatics-for-Physics-Based-Force-Fields
+# Accurate-Electrostatics-for-Physics-Based-Force-Fields
 Supporting information for reproducing results in the scientific article
 [_Accurate Electrostatics for Physics-Based Force Fields through Machine Learning_].
 
