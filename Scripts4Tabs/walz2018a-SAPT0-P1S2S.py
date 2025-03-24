@@ -119,7 +119,7 @@ if __name__ == "__main__":
 
     filename = "electable.tex"
     with open(filename, "w") as outf:
-        outf.write("""\\begin{table}
+        outf.write("""\\begin{table}[ht]
 \\centering
 \\caption{Electrostatic energies from SAPT at the experimental minimum energy distance~\cite{NISTa}  and corresponding energy of two point charges. The SAPT0~\cite{Sherill2013a} level of theory was applied and the total Electrostatics energy is reported. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, a 1S Slater distribution, and a 2S Slater distribution, fitted to the electrostatic potential from 0.0 (ESP$_0$) or 2.0 (ESP$_{vdw}$) to 4.5 {\AA}.}
 \\label{tab:sapt}

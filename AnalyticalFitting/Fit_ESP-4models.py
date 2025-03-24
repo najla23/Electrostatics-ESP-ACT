@@ -7,7 +7,7 @@ import json
 from enum import Enum
 from potential_elec_functions import *
 
-def doit(T:int):
+def doit(T:int, texf):
 
         def Point_core_1slater_shell_charge(distance, q_c, z2):
             q_s = charge - q_c
@@ -123,7 +123,7 @@ def doit(T:int):
         fig, (axes1, axes2, axes3, axes4, axes5, axes6) = plt.subplots(len(data), 1, figsize=(6, 14))
         axes = [axes1, axes2, axes3, axes4, axes5, axes6]
 
-        print(f'Compound & Charge model & charge_core & charge_shell (i) & charge_shell (ii) & zeta_shell (i) & zeta_shell (ii) & RMSE')
+        #texf.write(f'Compound & Charge model & charge_core & charge_shell (i) & charge_shell (ii) & zeta_shell (i) & zeta_shell (ii) & RMSE\n')
         all_params = {}
 
         for i, (compound, (distance_data, potential_data)) in enumerate(data.items()):
@@ -184,7 +184,7 @@ def doit(T:int):
                     params[f"z2_{func_index}"]  = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{label} & {charge_model} &  {original_charge+q_c_opt:.3f} &  {q_s_opt:.3f} & - &  {z2_opt:.3f} & -  & {rmse:.5f} \\\\")
+                    texf.write(f"{label} & {charge_model} &  {original_charge+q_c_opt:.3f} &  {q_s_opt:.3f} & - &  {z2_opt:.3f} & -  & {rmse:.5f} \\\\\n")
 
                 elif func_index == 2 or func_index == 3:
                     q_c_opt, q_s2_opt, z1_opt, z2_opt = popt
@@ -197,12 +197,12 @@ def doit(T:int):
                     params[f"z2_{func_index}"]   = z2_opt
 
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{label} & {charge_model} & {original_charge+q_c_opt:.3f} & {q_s1_opt:.3f} &  {q_s2_opt:.3f} & {z1_opt:.3f} & {z2_opt:.3f} & {rmse:.5f} \\\\")
+                    texf.write(f"{label} & {charge_model} & {original_charge+q_c_opt:.3f} & {q_s1_opt:.3f} &  {q_s2_opt:.3f} & {z1_opt:.3f} & {z2_opt:.3f} & {rmse:.5f} \\\\\n")
                 elif func_index == 4:
                     [q_c_opt] = popt
                     params[f"q_c_{func_index}"]  = q_c_opt + original_charge
                     rmse = np.sqrt(np.mean((np.array(charge_model_compound) - np.array(potential_data))**2))
-                    print(f"{label} & {charge_model} & {original_charge+q_c_opt:.3f} &  &  & &  & {rmse:.3f} \\\\")
+                    texf.write(f"{label} & {charge_model} & {original_charge+q_c_opt:.3f} &  &  & &  & {rmse:.3f} \\\\\n")
 
                 axes[i].plot(np.array(distance_data), np.array(charge_model_compound)-np.array(potential_data), label=f'{charge_model}')
                 axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=18)
@@ -226,6 +226,28 @@ def doit(T:int):
         plt.savefig('Fit-Alkali_Halides-%d.pdf' % T)
         plt.show()
 
+def tex_header(T:int, texf):
+        texf.write("""
+\\begin{table}[htb]
+\\centering
+\\caption{ESP parameters for ions and charge models (CM), charge on core q$_c$ and shells q$_s$ $i$ and $ii$, respectively, distribution widths $\\zeta$ in 1/\\text{\\AA}. Charge models include a positive point charge with either one Gaussian (PC+G) or 1S Slater distributed charge (PC+1S), and a point charge with two Gaussian charges (PC+G+G), or a point charge with a 1S and a 2S Slater charge (PC+1S+2S). Root mean square error (kJ/mol e) after fitting from 0.0 to 4.5 {\\AA}.}   
+\\label{tab:ESP%d}
+\\begin{tabular}{cccccccccccccccc}
+\\hline
+Ion & CM & $q_c$ & $q_s{i}$ & $q_s{ii}$ & $\\zeta_s{i}$ & $\\zeta_s{ii}$ & RMSE \\\\
+\\hline
+""" % T)
+
+def tex_footer(texf):
+        texf.write("""
+\\hline
+\\end{tabular}
+\\end{table}
+""")
+
 if __name__ == "__main__":
     for T in [ 100, 10 ]:
-            doit(T)
+            with open("espfit%d.tex" % T, "w") as texf:
+                    tex_header(T, texf)
+                    doit(T, texf)
+                    tex_footer(texf)
