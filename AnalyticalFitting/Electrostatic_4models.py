@@ -109,7 +109,29 @@ def main(T:int):
                         plt.savefig(f'{figs}/SAPT_{cation}{anion}_{T}.pdf')
 #       plt.show()
 
+def print_tex():
+    with open("ionpair_energies.tex", "w") as outf:
+        for cat in [ "Li", "Na", "K" ]:
+            for an in [ "F", "Cl", "Br" ]:
+                ionpair = cat+an
+                outf.write("""
+\\begin{figure}[htb!]
+\\centering
+\\begin{minipage}{0.5\\textwidth}
+\\centering
+\\includegraphics[width=0.9\\linewidth]{Figures/SAPT_%s_10.pdf}
+\\end{minipage}%%
+\\begin{minipage}{0.5\\textwidth}
+\\centering
+\\includegraphics[width=0.9\\linewidth]{Figures/SAPT_%s_100.pdf}
+\\end{minipage}
+\\caption{Electrostatic energies from SAPT0 with the aug-cc-pVTZ basis set and different charge models based on fitting the ESP from 2.0 to 4.5 {\\AA} (left) and 0.0 to 4.5 {\\AA} (right) for %s. Note different units on the y-axis.}
+\\label{fig:pot_%s}
+\\end{figure}
+""" % ( ionpair, ionpair, ionpair, ionpair ) )
+
 if __name__ == "__main__":
-   os.makedirs(figs, exist_ok=True)
-   for T in [ 10, 100 ]:
-      main(T)
+    print_tex()
+    os.makedirs(figs, exist_ok=True)
+    for T in [ 10, 100 ]:
+        main(T)
