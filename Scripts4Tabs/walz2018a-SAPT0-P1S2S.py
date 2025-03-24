@@ -112,6 +112,7 @@ def print_walz(outf, slater:bool):
     mean_mse_eesp = np.mean(mse_eesp_values)
     mean_mse_eesp0 = np.mean(mse_eesp0_values)
 
+    outf.write("\\hline\n")
     outf.write("%s & & & %.1f & %.1f & %.1f \\\\\n" % ( "RMSD", mean_rmsd_epc, mean_rmsd_eesp, mean_rmsd_eesp0) )
     outf.write("%s & & & %.1f & %.1f & %.1f \\\\\n" % ( "MSE", mean_mse_epc, mean_mse_eesp, mean_mse_eesp0) )
 
