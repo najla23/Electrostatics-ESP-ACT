@@ -82,7 +82,8 @@ def main(T:int):
                                 CM= Point_core_1slater_2slater_shell
 
                             function_values[function_name] = CM(
-                                distances, params[f"{cation}"][f"q_c_{func_index}"],
+                                distances, 
+                                params[f"{cation}"][f"q_c_{func_index}"],
                                 params[f"{cation}"][f"q_s1_{func_index}"],
                                 params[f"{cation}"][f"q_s2_{func_index}"],
                                 params[f"{anion}"][f"q_c_{func_index}"],

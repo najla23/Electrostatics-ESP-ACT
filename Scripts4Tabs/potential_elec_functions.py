@@ -177,7 +177,7 @@ def Point_core_1slater_2slater_shell(distances,
                  (q_s2_cl*q_c_na * slater2_core_shell_potential(distances[i], z_s_cl)) +
                  (q_s2_na*q_c_cl * slater2_core_shell_potential(distances[i], z_s_na))+
 
-                 (q_s1_na*q_s1_cl * (calculate_energy_shellshell(distances[i], z_s_cl*distances[i], z_s_na*distances[i])) ) +
+                 (q_s1_na*q_s1_cl * (calculate_energy_shellshell(distances[i], z_c_cl*distances[i], z_c_na*distances[i])) ) +
                  (q_s2_na*q_s2_cl * (calculate_energy_shellshell2(distances[i], z_s_cl, z_s_na)) )  +
                  (q_s1_na*q_s2_cl * (double_Slater_1S_2S(distances[i], z_c_na, z_s_cl)))+
                  (q_s1_cl*q_s2_na * (double_Slater_1S_2S(distances[i], z_c_cl, z_s_na)))

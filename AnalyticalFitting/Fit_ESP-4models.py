@@ -146,7 +146,8 @@ def doit(T:int, texf):
 
             # Modify data to just fit to the difference, but not for the set starting at zero
             original_charge = 0
-            if distance_data[0] > 0:
+            
+            if False and distance_data[0] > 0:
                     original_charge = charge
                     for d in range(len(distance_data)):
                             potential_data[d] -= one_4pi_eps0*charge/distance_data[d]
