@@ -98,6 +98,16 @@ def main(T:int):
 
 
                         axes[i].plot(x1, y1, label=f"SAPT", color='r')
+                        ener_pc = []
+                        for j in range(len(x1)):
+                            ener = 0
+                            if x1[j] > 0:
+                                ener = -one_4pi_eps0/x1[j]
+                            ener_pc.append(ener)
+                        # Compute RMSD
+                        pcrmsd = np.sqrt(np.mean((y1-ener_pc)**2))
+                        pclabel = ("PC RMSD = %.0f kJ/mol" % ( pcrmsd ))
+                        axes[i].plot(x1, ener_pc, label=pclabel, color='blue')
                         # Compute RMSD
                         rmsd = np.sqrt(np.mean((y1-function_values[function_name])**2))
                         flabel = ("%s RMSD = %.0f kJ/mol" % ( func_index_to_name[func_index], rmsd))
@@ -129,7 +139,7 @@ def print_tex():
 \\centering
 \\includegraphics[width=0.98\\linewidth]{Figures/SAPT_%s_100.pdf}
 \\end{minipage}
-\\caption{Electrostatic energies from SAPT0 with the aug-cc-pVTZ basis set and different charge models based on fitting the ESP from 2.0 to 4.5 {\\AA} (left) and 0.0 to 4.5 {\\AA} (right) for %s. Note that units on the y-axis may differ between plots.}
+\\caption{Electrostatic energies from SAPT0 with the aug-cc-pVTZ basis set and different charge models based on fitting the ESP from 2.0 to 4.5 {\\AA} (left) and 0.0 to 4.5 {\\AA} (right) for %s. Note that units on the y-axis may differ between plots. RMSD is computed for the points plotted, but it should be noted the range of points does not correspond to the range used for fitting, for those numbers please see Tables S1 and S2.}
 \\label{fig:pot_%s}
 \\end{figure}
 """ % ( ionpair, ionpair, ionpair, ionpair ) )
