@@ -208,7 +208,7 @@ def doit(T:int, texf):
                 axes[i].plot(np.array(distance_data), np.array(charge_model_compound)-np.array(potential_data), label=f'{charge_model}')
                 axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=18)
             all_params[compound] = params
-        axes[2].set_ylabel('Residual electrostatic potential (kJ/mol e)', fontsize=18)
+        axes[3].set_ylabel('Residual electrostatic potential (kJ/mol e)', fontsize=18)
         axes[5].set_xlabel(f'Distance ($\AA$)', fontsize=18)
         axes[5].tick_params(axis='x', labelsize=14)
         for ix in range(6):
@@ -219,7 +219,14 @@ def doit(T:int, texf):
              json.dump(all_params, json_f, indent=4)
              json_f.write('\n')
 
-        axes1.legend(bbox_to_anchor=(.05, .95), loc='upper left',fontsize=14)
+        xleg = 0.1
+        yleg = 0.95
+        if T == 10:
+                xleg = 0.3
+                yleg = 1.2
+                axes2.legend(bbox_to_anchor=(xleg, yleg), loc='upper left',fontsize=14, framealpha=1, facecolor='white')
+        else:
+                axes1.legend(bbox_to_anchor=(xleg, yleg), loc='upper left',fontsize=14)
         plt.tight_layout()
         plt.subplots_adjust(hspace=0)
 
