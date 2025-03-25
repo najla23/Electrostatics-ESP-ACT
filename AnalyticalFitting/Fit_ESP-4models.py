@@ -213,7 +213,6 @@ def doit(T:int, texf):
         axes[5].tick_params(axis='x', labelsize=14)
         for ix in range(6):
             axes[ix].tick_params(axis='y', labelsize=14)
-        print()
 
         json_f_path = f"params_4_{T}.json"
         with open(json_f_path, "w") as json_f:
@@ -224,8 +223,9 @@ def doit(T:int, texf):
         plt.tight_layout()
         plt.subplots_adjust(hspace=0)
 
-        plt.savefig('Fit-Alkali_Halides-%d.pdf' % T)
-        plt.show()
+        outpdf = ('Fit-Alkali_Halides-%d.pdf' % T)
+        plt.savefig(outpdf)
+        print("Please check %s" % outpdf)
 
 def tex_header(T:int, texf):
         texf.write("""
@@ -248,7 +248,9 @@ def tex_footer(texf):
 
 if __name__ == "__main__":
     for T in [ 100, 10 ]:
-            with open("espfit%d.tex" % T, "w") as texf:
+            outtex = ("espfit%d.tex" % T)
+            with open(outtex, "w") as texf:
                     tex_header(T, texf)
                     doit(T, texf)
                     tex_footer(texf)
+                    print("Please check %s" % outtex)

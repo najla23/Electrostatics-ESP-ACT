@@ -25,7 +25,6 @@ def main(T:int):
     ]
 
     data2 = [np.loadtxt(file) for file in files]
-    distances = np.arange(1, 4.6, 0.1)
 
     function_values = {}
 
@@ -45,7 +44,7 @@ def main(T:int):
 
 
     for file, dataset in zip(files, data2):
-        fig, axes = plt.subplots(4, 1, figsize=(3, 9))
+        fig, axes = plt.subplots(4, 1, figsize=(6, 14))
 
         for i in range(4):
             x, y = dataset[:, 0], dataset[:, 1]
@@ -59,7 +58,8 @@ def main(T:int):
                         func_index = i
                         function_name = f"{func_index_to_name[func_index]}_{cation}{anion}"
                         function_values[function_name] = None
-
+                        distances = x1
+                        
                         if func_index == 0 or func_index ==1:
                             if  func_index == 0:
                                 CM= Point_core_gaussian_shell
@@ -97,13 +97,17 @@ def main(T:int):
 
 
 
-                        axes[i].plot(x1, y1, label=f"SAPT_{cation}{anion}", color='r')
-                        axes[i].plot(distances, function_values[function_name], color='black', label=function_name)
-                        axes[i].set_xlabel('Distance ($\AA$)', fontsize=12)
-                        axes[i].set_ylabel('Electrostatic energies (kJ/mol)', fontsize=8)
-                        axes[i].tick_params(axis='x', labelsize=8)
-                        axes[i].tick_params(axis='y', labelsize=8)
-                        axes[i].legend(fontsize=12)
+                        axes[i].plot(x1, y1, label=f"SAPT", color='r')
+                        # Compute RMSD
+                        rmsd = np.sqrt(np.mean((y1-function_values[function_name])**2))
+                        flabel = ("%s RMSD = %.0f kJ/mol" % ( func_index_to_name[func_index], rmsd))
+                        axes[i].plot(distances, function_values[function_name], color='black', label=flabel)
+                        axes[i].set_xlabel('Distance ($\AA$)', fontsize=18)
+                        if i == 1:
+                            axes[i].set_ylabel('Electrostatic energies (kJ/mol)', fontsize=18)
+                        axes[i].tick_params(axis='x', labelsize=14)
+                        axes[i].tick_params(axis='y', labelsize=14)
+                        axes[i].legend(fontsize=16)
                         plt.tight_layout()
                         plt.subplots_adjust(hspace=0)
                         plt.savefig(f'{figs}/SAPT_{cation}{anion}_{T}.pdf')
@@ -119,13 +123,13 @@ def print_tex():
 \\centering
 \\begin{minipage}{0.5\\textwidth}
 \\centering
-\\includegraphics[width=0.9\\linewidth]{Figures/SAPT_%s_10.pdf}
+\\includegraphics[width=0.98\\linewidth]{Figures/SAPT_%s_10.pdf}
 \\end{minipage}%%
 \\begin{minipage}{0.5\\textwidth}
 \\centering
-\\includegraphics[width=0.9\\linewidth]{Figures/SAPT_%s_100.pdf}
+\\includegraphics[width=0.98\\linewidth]{Figures/SAPT_%s_100.pdf}
 \\end{minipage}
-\\caption{Electrostatic energies from SAPT0 with the aug-cc-pVTZ basis set and different charge models based on fitting the ESP from 2.0 to 4.5 {\\AA} (left) and 0.0 to 4.5 {\\AA} (right) for %s. Note different units on the y-axis.}
+\\caption{Electrostatic energies from SAPT0 with the aug-cc-pVTZ basis set and different charge models based on fitting the ESP from 2.0 to 4.5 {\\AA} (left) and 0.0 to 4.5 {\\AA} (right) for %s. Note that units on the y-axis may differ between plots.}
 \\label{fig:pot_%s}
 \\end{figure}
 """ % ( ionpair, ionpair, ionpair, ionpair ) )

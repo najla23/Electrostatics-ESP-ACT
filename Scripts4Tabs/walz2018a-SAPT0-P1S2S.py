@@ -28,15 +28,28 @@ def gauss(distance:float, z1:float, z2:float)->float:
     return one_4pi_eps0*math.erf(zeta*distance)/distance
 
 
-def rmsd(ref_values, values):
-    return np.sqrt(np.mean((np.array(ref_values) - np.array(values))**2))
+def msd(ref_values, values):
+    return (np.mean((np.array(ref_values) - np.array(values))**2))
 
 
 def mse(ref_values, values):
     return np.mean(np.subtract(values,ref_values))
 
-
-
+def compute_one(params:dict, a1:str, a2:str, rrr:float, func:int)->float:
+    if func == 3:
+        myfunc = Point_core_1slater_2slater_shell
+    elif func == 2:
+        myfunc = Point_core_2gaussian_shell
+    else:
+        sys.exit("Cannot handle func_index %d" % func)
+    sf = str(func)
+    [eesp]  = myfunc([rrr],
+                     params[a1]["q_c_"+sf], params[a1]["q_s1_"+sf], params[a1]["q_s2_"+sf],
+                     params[a2]["q_c_"+sf], params[a2]["q_s1_"+sf], params[a2]["q_s2_"+sf],
+                     params[a1]["z1_"+sf], params[a2]["z1_"+sf],
+                     params[a1]["z2_"+sf], params[a2]["z2_"+sf])
+    return eesp
+        
 def print_walz(outf, slater:bool):
     with open('../AnalyticalFitting/params_4_10.json', 'r') as json_f:
         params = json.load(json_f)
@@ -46,9 +59,9 @@ def print_walz(outf, slater:bool):
         params0 = json.load(json_f0)
 
 
-    rmsd_epc_values = []
-    rmsd_eesp_values = []
-    rmsd_eesp0_values = []
+    msd_epc_values = []
+    msd_eesp_values = []
+    msd_eesp0_values = []
 
     mse_epc_values = []
     mse_eesp_values = []
@@ -67,47 +80,28 @@ def print_walz(outf, slater:bool):
         # q_c_na, q_s1_na, q_s2_na, q_c_cl, q_s1_cl, q_s2_cl, z_c_na, z_c_cl, z_s_na, z_s_cl):
 
         #(distances, q_c_na, q_s_na, q_c_cl, q_s_cl, z_na, z_cl)
-        if slater:
-            myfunc = Point_core_1slater_2slater_shell
-        else:
-            myfunc = Point_core_2gaussian_shell
-        if not "q_c_3" in params[a1]:
-            print("No parameters for compound %s" % a1)
-            continue
-        if not "q_c_3" in params[a2]:
-            print("No parameters for compound %s" % a2)
-            continue
-        [eesp]  = myfunc([rrr],
-                         params[a1]["q_c_3"], params[a1]["q_s1_3"], params[a1]["q_s2_3"],
-                         params[a2]["q_c_3"], params[a2]["q_s1_3"], params[a2]["q_s2_3"],
-                         params[a1]["z1_3"], params[a2]["z1_3"],
-                         params[a1]["z2_3"], params[a2]["z2_3"])
-
-        [eesp0]  = myfunc([rrr],
-                          params0[a1]["q_c_3"], params0[a1]["q_s1_3"], params0[a1]["q_s2_3"],
-                          params0[a2]["q_c_3"], params0[a2]["q_s1_3"], params0[a2]["q_s2_3"],
-                          params0[a1]["z1_3"], params0[a2]["z1_3"],
-                          params0[a1]["z2_3"], params0[a2]["z2_3"])
+        eesp  = compute_one(params, a1, a2, rrr, 3)
+        eesp0 = compute_one(params0, a1, a2, rrr, 3)
 
         epc   = -one_4pi_eps0/rrr
         outf.write("%s & %g & %.1f & %.1f & %.1f & %.1f \\\\\n" % ( rm, rrr, sapt[rm]["eelec"], epc, eesp, eesp0) )
-        rmsd_epc = rmsd([sapt[rm]["eelec"]], [epc])
-        rmsd_eesp = rmsd([sapt[rm]["eelec"]], [eesp])
-        rmsd_eesp0 = rmsd([sapt[rm]["eelec"]], [eesp0])
+        msd_epc = msd([sapt[rm]["eelec"]], [epc])
+        msd_eesp = msd([sapt[rm]["eelec"]], [eesp])
+        msd_eesp0 = msd([sapt[rm]["eelec"]], [eesp0])
         mse_epc = mse([sapt[rm]["eelec"]], [epc])
         mse_eesp = mse([sapt[rm]["eelec"]], [eesp])
         mse_eesp0 = mse([sapt[rm]["eelec"]], [eesp0])
 
-        rmsd_epc_values.append(rmsd_epc)
-        rmsd_eesp_values.append(rmsd_eesp)
-        rmsd_eesp0_values.append(rmsd_eesp0)
+        msd_epc_values.append(msd_epc)
+        msd_eesp_values.append(msd_eesp)
+        msd_eesp0_values.append(msd_eesp0)
         mse_epc_values.append(mse_epc)
         mse_eesp_values.append(mse_eesp)
         mse_eesp0_values.append(mse_eesp0)
 
-    mean_rmsd_epc = np.mean(rmsd_epc_values)
-    mean_rmsd_eesp = np.mean(rmsd_eesp_values)
-    mean_rmsd_eesp0 = np.mean(rmsd_eesp0_values)
+    mean_rmsd_epc = np.sqrt(np.mean(msd_epc_values))
+    mean_rmsd_eesp = np.sqrt(np.mean(msd_eesp_values))
+    mean_rmsd_eesp0 = np.sqrt(np.mean(msd_eesp0_values))
     mean_mse_epc = np.mean(mse_epc_values)
     mean_mse_eesp = np.mean(mse_eesp_values)
     mean_mse_eesp0 = np.mean(mse_eesp0_values)
