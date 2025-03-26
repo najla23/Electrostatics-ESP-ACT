@@ -13,9 +13,12 @@ def main(T:int):
     anions = ["F", "Cl", "Br"]
     dir = 'SAPT_Alkali_Halides'
 
-    fig, allaxes = plt.subplots(3, 3)#, figsize=(6, 6))
+    fig, allaxes = plt.subplots(3, 3, figsize=(6, 6))
     axes = allaxes.flatten()
     i = 0
+    # Start RMSD calc from this distance in Angstrom
+    xstart = 2
+    istart = 0
     for cation in cations:
         for anion in anions:
             compound = cation + anion
@@ -23,8 +26,11 @@ def main(T:int):
             dataset = np.loadtxt(myfile)
             x, y = dataset[:, 0], dataset[:, 1]
             sorted_indices = np.argsort(x)
-            x1 = x[sorted_indices]
-            y1 = y[sorted_indices]
+            while (x[sorted_indices][istart] < xstart and
+                   istart < len(x[sorted_indices]) - 1):
+                istart += 1
+            x1 = x[sorted_indices][istart:]
+            y1 = y[sorted_indices][istart:]
 
             axes[i].plot(x1, y1, label=("SAPT %s" % compound), color='r')
             ener_pc = []
