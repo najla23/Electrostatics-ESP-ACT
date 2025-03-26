@@ -85,7 +85,7 @@ def print_walz(outf, print_funcs:list, T:int):
         diff    = epc - sapt[rm]["eelec"]
         epc_val["msd"].append(diff**2)
         epc_val["mse"].append(diff)
-        outf.write("%s & %g & %.1f & %.1f " % ( rm, rrr, sapt[rm]["eelec"], epc ) )
+        outf.write("%s & %g & %.1f & %.1f " % ( rm.replace("-",""), rrr, sapt[rm]["eelec"], epc ) )
         # Then our own functions
         for pf in print_funcs:
             eesp  = compute_one(params, a1, a2, rrr, pf)
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         filename = ( "electable-%d.tex" % T)
 
         ctext       = { 0: "  a Gaussian charge", 1: "  a 1S Slater charge", 2: "  two Gaussian charges", 3: "  a 1S and a 2S Slater charge" }
-        caption     = "Electrostatic energies from SAPT at the experimental minimum energy distance~\cite{NISTa}  and corresponding energy of two point charges. The SAPT0~\cite{Sherill2013a} level of theory was applied and the total Electrostatics energy is reported. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, combined with "
+        caption     = "Electrostatic energies at the experimental minimum energy distance~\cite{NISTa} based on the SAPT0~\cite{Sherill2013a} level of theory. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, combined with "
     
         abcd   = "ABCD"
         myesps = ""
@@ -127,9 +127,9 @@ if __name__ == "__main__":
             elif ppp == len(print_funcs)-2:
                 caption += " or "
         if T == 10:
-            caption += " fitted to the electrostatic potential from 2.0 to 4.5 {\AA}."
+            caption += " fitted to the Hartree-Fock electrostatic potential from 2.0 to 4.5 {\AA}."
         elif T == 100:
-            caption += " fitted to the electrostatic potential from 0.0 to 4.5 {\AA}."
+            caption += " fitted to the Hartree-Fock electrostatic potential from 0.0 to 4.5 {\AA}."
         with open(filename, "w") as outf:
             outf.write("""\\begin{table}[ht]
 \\centering
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 \\begin{tabular}{lccc%s}
 \\hline
 Ion pair & r$_{min}$ & \\multicolumn{%d}{c}{E$_{elec}$ (kJ/mol)}\\\\
-& ({\\AA})&                 SAPT & PC %s\\\\
+& ({\\AA})&                 SAPT0 & PC %s\\\\
 \\hline
 """ % ( caption, cols, 2+len(print_funcs), myesps ) )
             print_walz(outf, print_funcs, T)
