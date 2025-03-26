@@ -2,7 +2,7 @@
 
 import json, math
 import numpy as np
-from potential_elec_functions import Point_core_1slater_2slater_shell, Point_core_1slater_shell, Point_core_2gaussian_shell, one_4pi_eps0
+from potential_elec_functions import Point_core_1slater_2slater_shell, Point_core_1slater_shell, Point_core_2gaussian_shell, one_4pi_eps0, Point_core_gaussian_shell, Point_core_1slater_shell
 
 sapt = {
     "Li-F":  { "rmin": 1.564, "eelec":  -867.15},
@@ -36,36 +36,38 @@ def mse(ref_values, values):
     return np.mean(np.subtract(values,ref_values))
 
 def compute_one(params:dict, a1:str, a2:str, rrr:float, func:int)->float:
-    if func == 3:
-        myfunc = Point_core_1slater_2slater_shell
-    elif func == 2:
-        myfunc = Point_core_2gaussian_shell
+    sf = str(func)
+    if func in [ 0, 1]:
+        if func == 0:
+            myfunc = Point_core_gaussian_shell
+        elif func == 1:
+            myfunc = Point_core_1slater_shell
+        [eesp] = myfunc([rrr],
+                        params[a1]["q_c_"+sf], params[a1]["q_s_"+sf],
+                        params[a2]["q_c_"+sf], params[a2]["q_s_"+sf],
+                        params[a1]["z2_"+sf], params[a2]["z2_"+sf])
+    elif func in [ 2, 3]:
+        if func == 3:
+            myfunc = Point_core_1slater_2slater_shell
+        elif func == 2:
+            myfunc = Point_core_2gaussian_shell
+        [eesp]  = myfunc([rrr],
+                         params[a1]["q_c_"+sf], params[a1]["q_s1_"+sf], params[a1]["q_s2_"+sf],
+                         params[a2]["q_c_"+sf], params[a2]["q_s1_"+sf], params[a2]["q_s2_"+sf],
+                         params[a1]["z1_"+sf], params[a2]["z1_"+sf],
+                         params[a1]["z2_"+sf], params[a2]["z2_"+sf])
     else:
         sys.exit("Cannot handle func_index %d" % func)
-    sf = str(func)
-    [eesp]  = myfunc([rrr],
-                     params[a1]["q_c_"+sf], params[a1]["q_s1_"+sf], params[a1]["q_s2_"+sf],
-                     params[a2]["q_c_"+sf], params[a2]["q_s1_"+sf], params[a2]["q_s2_"+sf],
-                     params[a1]["z1_"+sf], params[a2]["z1_"+sf],
-                     params[a1]["z2_"+sf], params[a2]["z2_"+sf])
     return eesp
         
-def print_walz(outf, slater:bool):
-    with open('../AnalyticalFitting/params_4_10.json', 'r') as json_f:
+def print_walz(outf, print_funcs:list, T:int):
+    with open('../AnalyticalFitting/params_4_%s.json' % T, 'r') as json_f:
         params = json.load(json_f)
 
-
-    with open('../AnalyticalFitting/params_4_100.json', 'r') as json_f0:
-        params0 = json.load(json_f0)
-
-
-    msd_epc_values = []
-    msd_eesp_values = []
-    msd_eesp0_values = []
-
-    mse_epc_values = []
-    mse_eesp_values = []
-    mse_eesp0_values = []
+    epc_val  = { "msd": [], "mse": [] }
+    eesp_val = {}
+    for pf in print_funcs:
+        eesp_val[pf] = { "msd": [], "mse": [] }
 
     for rm in sapt.keys():
         ions = rm.split("-")
@@ -77,57 +79,72 @@ def print_walz(outf, slater:bool):
         qc2  = walz[a2]["qcore"]
         qs2  = -1-qc2
         eelec = -gauss(rrr, walz[a1]["zeta"], walz[a2]["zeta"])
-        # q_c_na, q_s1_na, q_s2_na, q_c_cl, q_s1_cl, q_s2_cl, z_c_na, z_c_cl, z_s_na, z_s_cl):
 
-        #(distances, q_c_na, q_s_na, q_c_cl, q_s_cl, z_na, z_cl)
-        eesp  = compute_one(params, a1, a2, rrr, 3)
-        eesp0 = compute_one(params0, a1, a2, rrr, 3)
+        # Point charge first
+        epc     = -one_4pi_eps0/rrr
+        diff    = epc - sapt[rm]["eelec"]
+        epc_val["msd"].append(diff**2)
+        epc_val["mse"].append(diff)
+        outf.write("%s & %g & %.1f & %.1f " % ( rm, rrr, sapt[rm]["eelec"], epc ) )
+        # Then our own functions
+        for pf in print_funcs:
+            eesp  = compute_one(params, a1, a2, rrr, pf)
+            diff  = eesp - sapt[rm]["eelec"]
+            eesp_val[pf]["msd"].append(diff**2)
+            eesp_val[pf]["mse"].append(diff)
+            outf.write(" & %.1f" % eesp)
 
-        epc   = -one_4pi_eps0/rrr
-        outf.write("%s & %g & %.1f & %.1f & %.1f & %.1f \\\\\n" % ( rm, rrr, sapt[rm]["eelec"], epc, eesp, eesp0) )
-        msd_epc = msd([sapt[rm]["eelec"]], [epc])
-        msd_eesp = msd([sapt[rm]["eelec"]], [eesp])
-        msd_eesp0 = msd([sapt[rm]["eelec"]], [eesp0])
-        mse_epc = mse([sapt[rm]["eelec"]], [epc])
-        mse_eesp = mse([sapt[rm]["eelec"]], [eesp])
-        mse_eesp0 = mse([sapt[rm]["eelec"]], [eesp0])
-
-        msd_epc_values.append(msd_epc)
-        msd_eesp_values.append(msd_eesp)
-        msd_eesp0_values.append(msd_eesp0)
-        mse_epc_values.append(mse_epc)
-        mse_eesp_values.append(mse_eesp)
-        mse_eesp0_values.append(mse_eesp0)
-
-    mean_rmsd_epc = np.sqrt(np.mean(msd_epc_values))
-    mean_rmsd_eesp = np.sqrt(np.mean(msd_eesp_values))
-    mean_rmsd_eesp0 = np.sqrt(np.mean(msd_eesp0_values))
-    mean_mse_epc = np.mean(mse_epc_values)
-    mean_mse_eesp = np.mean(mse_eesp_values)
-    mean_mse_eesp0 = np.mean(mse_eesp0_values)
+        outf.write("\\\\\n")
 
     outf.write("\\hline\n")
-    outf.write("%s & & & %.1f & %.1f & %.1f \\\\\n" % ( "RMSD", mean_rmsd_epc, mean_rmsd_eesp, mean_rmsd_eesp0) )
-    outf.write("%s & & & %.1f & %.1f & %.1f \\\\\n" % ( "MSE", mean_mse_epc, mean_mse_eesp, mean_mse_eesp0) )
+    outf.write("%s & & & %.1f" % ( "RMSD", np.sqrt(np.mean(epc_val["msd"])) ) )
+    for pf in print_funcs:
+        outf.write(" & %.1f" % np.sqrt(np.mean(eesp_val[pf]["msd"])) )
+    outf.write("\\\\\n")
+    outf.write("%s & & & %.1f" % ( "MSE", np.mean(epc_val["mse"]) ) )
+    for pf in print_funcs:
+        outf.write(" & %.1f" % np.mean(eesp_val[pf]["mse"]) )
+    outf.write("\\\\\n")
 
 if __name__ == "__main__":
+    print_funcs = [ 0, 1, 2, 3 ]
+    cols        = "c" * len(print_funcs)
+    for T in [ 10, 100 ]:
+        filename = ( "electable-%d.tex" % T)
 
-    filename = "electable.tex"
-    with open(filename, "w") as outf:
-        outf.write("""\\begin{table}[ht]
+        ctext       = { 0: "  a Gaussian charge", 1: "  a 1S Slater charge", 2: "  two Gaussian charges", 3: "  a 1S and a 2S Slater charge" }
+        caption     = "Electrostatic energies from SAPT at the experimental minimum energy distance~\cite{NISTa}  and corresponding energy of two point charges. The SAPT0~\cite{Sherill2013a} level of theory was applied and the total Electrostatics energy is reported. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, combined with "
+    
+        abcd   = "ABCD"
+        myesps = ""
+        for ppp in range(len(print_funcs)):
+            pf = print_funcs[ppp]
+            myesps += (" & %c " % abcd[ppp] )
+            caption += str(abcd[ppp]) + ":"
+            caption += ctext[pf]
+            if ppp < len(print_funcs)-2:
+                caption += ","
+            elif ppp == len(print_funcs)-2:
+                caption += " or "
+        if T == 10:
+            caption += " fitted to the electrostatic potential from 2.0 to 4.5 {\AA}."
+        elif T == 100:
+            caption += " fitted to the electrostatic potential from 0.0 to 4.5 {\AA}."
+        with open(filename, "w") as outf:
+            outf.write("""\\begin{table}[ht]
 \\centering
-\\caption{Electrostatic energies from SAPT at the experimental minimum energy distance~\cite{NISTa}  and corresponding energy of two point charges. The SAPT0~\cite{Sherill2013a} level of theory was applied and the total Electrostatics energy is reported. Point charge (PC) energy follows from Coulomb's law. ESP indicates model consisting of a point charge, a 1S Slater distribution, and a 2S Slater distribution, fitted to the electrostatic potential from 0.0 (ESP$_0$) or 2.0 (ESP$_{vdw}$) to 4.5 {\AA}.}
+\\caption{%s}
 \\label{tab:sapt}
-\\begin{tabular}{lccccc}
+\\begin{tabular}{lccc%s}
 \\hline
-Ion pair & r$_{min}$ & \\multicolumn{4}{c}{E$_{elec}$ (kJ/mol)}\\\\
-& ({\\AA})&                 SAPT & PC & ESP$_{vdw}$ & ESP$_0$\\\\
+Ion pair & r$_{min}$ & \\multicolumn{%d}{c}{E$_{elec}$ (kJ/mol)}\\\\
+& ({\\AA})&                 SAPT & PC %s\\\\
 \\hline
-""")
-        print_walz(outf, True)
-        outf.write("""\\hline
+""" % ( caption, cols, 2+len(print_funcs), myesps ) )
+            print_walz(outf, print_funcs, T)
+            outf.write("""\\hline
 \\end{tabular}
 \\end{table}
 """)
 
-    print("Output written to %s" % filename)
+        print("Output written to %s" % filename)
