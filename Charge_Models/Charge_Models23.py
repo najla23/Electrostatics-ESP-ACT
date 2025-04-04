@@ -7,7 +7,7 @@ def run_command(command):
     os.system(command)
 
 def run_one(qtype: str, suffix: str = "") -> dict:
-    molprops = "../AlexandriaFF/sapt-0.015.xml"
+    molprops = "../AlexandriaFF/merged6.xml" #sapt-0.015.xml"
     log_filename = f"{qtype}{suffix}.log"
     base_command = f"alexandria train_ff -mp {molprops} -nooptimize -g {log_filename}"
 
