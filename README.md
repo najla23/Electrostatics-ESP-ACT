@@ -5,19 +5,20 @@ Scripts for reproducing results in the scientific article
 
 ## Directory Layout
 
-- `Analytical_Fitting/` - Analytical fitting for ESP
-- `Antechamber/` - Force field files 
-- `Charge_Models/` - Reproduction of Table 2, Comparison of electrostatic energies from Alexandria and other popular charge models, e.g. ESP. Note that according to the definition of SAPT, we 
-   need the sum of electrostatic and induction energies from SAPT to obtain the correct electrostatic energy. 
-- `Database/` - Database for training 
-- `ESP_Alkali_Halides/` - ESP fitting and electrostatic calculations for different charge models, e.g. a (positive) point charge with either one Gaussian or 1S Slater distributed charge, or a 
+- `Analytical_Fitting/` - Analytical fitting for the quantum chemical electrostatic potential (ESP) and electrostatic calculations for different charge models, e.g. a (positive) point charge with either one Gaussian or 1S Slater distributed charge, or a
    point charge with two Gaussian charges or a point charge with a 1S and a 2S Slater charge.
-- `Fig_Script/` - Reproduction of the figure 2 presented in the article
+- `Antechamber/` - Force field files 
+- `Charge_Models/` - Reproduction of Table 1, Comparison of electrostatic energies from Alexandria and other popular charge models, e.g. ESP. Note that according to the definition of SAPT, we 
+   need the sum of electrostatic and induction energies from SAPT to obtain the correct electrostatic energy. 
+- `Database/` - SAPT2+(CCD)-δMP2 database for training and test 
+- `ESP_Alkali_Halides/` - ESP from the Hartree-Fock level of theory with the aug-cc-pVTZ basis setfor fitting 
+- `Fig_Script/` - Reproduction of the figure 2B,S2 presented in the article
 - `AlexandriaFF/` - Trained force field files on SAPT using Alexandria
-- `ForceFields/` - Available force field files such as TIP3P, TIP4P, GAFF,... 
-- `SAPT_Alkali_Halides/` - SAPT calculations  
+- `ForceFields/` - Available force field files such as TIP3P, TIP4P, TIP4P-2005.xml, TIP4PEW-JC.xml, Walz2018a.xml, GAFF, and SWM4-NDP.xml 
+- `SAPT_Alkali_Halides/` - SAPT0/aug-cc-pVTZ calculations  
 - `Selection/` - Data sets and a script to generate random test and train compounds 
 - `Tab_Script/` - Reproduction of tables presented in the article
+- `RMSD_Compound/` - RMSD values with respect to SAPT for all studied compounds, including our ACT model and several widely used models. 
 
 ## Requirements
 
