@@ -20,8 +20,12 @@ def run_one(qtype: str, suffix: str = "") -> dict:
         "6": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/coul-g.xml -fc_elec 1",
         "7": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-g.xml -fc_elec 1",
         "8": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-g.xml -fc_elec 1",
-        "9": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1",
-        "10": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1"
+        "9": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/coul-gv.xml -fc_elec 1",
+        "10": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/coul-gv.xml -fc_elec 1",
+        "11": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-gv.xml -fc_elec 1",
+        "12": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-gv.xml -fc_elec 1",
+        "13": " -sel ../Selection/ac-train.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1",
+        "14": " -sel ../Selection/ac-test.dat -ff ../AlexandriaFF/all-pg.xml -fc_elec 1"
     }
 
     suffix_commands2 = {
@@ -89,7 +93,7 @@ charge_models = [
     ("ACM", "1"), ("ACM", "2"), ("ACM", "3"),
     ("ACM", "4"), ("ACM", "5"), ("ACM", "6"),
     ("ACM", "7"), ("ACM", "8"), ("ACM", "9"),
-    ("ACM", "10")
+    ("ACM", "10"), ("ACM", "11"), ("ACM", "12"), ("ACM", "13"), ("ACM", "14")
 ]
 
 for qt, suffix in charge_models:
@@ -128,8 +132,12 @@ with open("legacy.tex", "w") as outf:
         "ACM6": ("GC (Test)", ""),
         "ACM7": ("GC (Train)", "Elec+Induc"),
         "ACM8": ("GC (Test)", ""),
-        "ACM9": ("PC+GS (Train)", "Elec,Induc"),
-        "ACM10": ("PC+GS (Test)", "")
+        "ACM9": ("GC+PGV (Train)", "Elec"),
+        "ACM10": ("GC+PGV (Test)", ""),
+        "ACM11": ("GC+PGV (Train)", "Elec+Induc"),
+        "ACM12": ("GC+PGV (Test)", ""),
+        "ACM13": ("PC+GVS (Train)", "Elec,Induc"),
+        "ACM14": ("PC+GVS (Test)", "")
     }
 
     for qt, suffix in charge_models:
