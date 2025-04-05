@@ -97,7 +97,7 @@ def main(T:int):
 
 
 
-                        axes[i].plot(x1, y1, label=f"SAPT", color='r')
+                        axes[i].plot(x1, y1, label=f"SAPT", color='crimson')
                         ener_pc = []
                         for j in range(len(x1)):
                             ener = 0
@@ -107,12 +107,12 @@ def main(T:int):
                         # Compute RMSD
                         pcrmsd = np.sqrt(np.mean((y1-ener_pc)**2))
                         pclabel = ("PC RMSD = %.0f kJ/mol" % ( pcrmsd ))
-                        axes[i].plot(x1, ener_pc, label=pclabel, color='blue')
+                        axes[i].plot(x1, ener_pc, label=pclabel, color='cornflowerblue')
                         # Compute RMSD
                         rmsd = np.sqrt(np.mean((y1-function_values[function_name])**2))
                         flabel = ("%s RMSD = %.0f kJ/mol" % ( func_index_to_name[func_index], rmsd))
-                        axes[i].plot(distances, function_values[function_name], color='black', label=flabel)
-                        axes[i].set_xlabel('Distance ($\AA$)', fontsize=18)
+                        axes[i].plot(distances, function_values[function_name], color='forestgreen', linestyle='--', label=flabel)
+                        axes[i].set_xlabel(r'Distance ($\mathrm{\AA}$)', fontsize=18)
                         if i == 1:
                             axes[i].set_ylabel('Electrostatic energies (kJ/mol)', fontsize=18)
                         axes[i].tick_params(axis='x', labelsize=14)
