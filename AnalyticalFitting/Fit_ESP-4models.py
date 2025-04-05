@@ -209,7 +209,7 @@ def doit(T:int, texf):
                 axes[i].text(.82, .89, label, transform=axes[i].transAxes,  va='top', fontsize=18)
             all_params[compound] = params
         axes[3].set_ylabel('Residual electrostatic potential (kJ/mol e)', fontsize=18)
-        axes[5].set_xlabel(f'Distance ($\AA$)', fontsize=18)
+        axes[5].set_xlabel(r'Distance ($\mathrm{\AA}$)', fontsize=18)
         axes[5].tick_params(axis='x', labelsize=14)
         for ix in range(6):
             axes[ix].tick_params(axis='y', labelsize=14)
