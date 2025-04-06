@@ -46,40 +46,23 @@ with open(file_path, "w") as file:
 
     file.write("\\begin{table}[ht]\n")
     file.write("\\centering\n")
-    file.write("\\caption{Electrostatic energy (kJ/mol) between alkali halides or water (oxygen) and amino acid side chain analogs, acetate (oxygen), formate (oxygen), methylammonium (nitrogen), ethylammonium (nitrogen) from SAPT2, the Generalized Amber Force Field with RESP charges, and ACT.}")
-    file.write("\label{tab:ac_ma_ions}")
+    file.write("\\caption{Electrostatic energy (kJ/mol) between alkali halides or water (oxygen) and amino acid side chain analogs, acetate (oxygen), formate (oxygen), methylammonium (nitrogen), ethylammonium (nitrogen) from SAPT2, the Generalized Amber Force Field~\\cite{Wang2004a} with either RESP~\\cite{Bayly1993a} or BCC~\\cite{Jakalian2002a} charges, and two models generated here using the ACT.}\n")
+    file.write("\label{tab:ac_ma_ions}\n")
     file.write("\\begin{tabular}{lccccccccc} \n")
     file.write("\\hline \n")
-    file.write("Ion & r$_{min}$ & SAPT & GAFF$_{RESP}$ & GAFF$_{BCC}$ & PC+GS & GC+PGV \n\\\\")
+    file.write("Ion & r$_{min}$ & SAPT & GAFF$_{RESP}$ & GAFF$_{BCC}$ & PC+GS & GC+PGV \\\\\n")
     file.write("\\hline \n")
 
 
     for i in range(len(data_SC_ION['Ion'])):
-        file.write(f"{data_SC_ION['Ion'][i]} & {data_SC_ION['r$_{min}$'][i]} & {data_SC_ION['E$_{elec}$ (kJ/mol) SAPT'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) GAFF_RESP'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) GAFF_BCC'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) ACT$_{GC}$'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) ACT$_{S}$'][i]:.1f} \n\\\\")
-
-    file.write(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value3:.1f} & {rmsd_value22:.1f} & {rmsd_value2:.1f} \n\\\\")
-    file.write(f"MSE & & & {mse_value1:.1f} & {mse_value3:.1f} & {mse_value22:.1f} & {mse_value2:.1f} \n\\\\")
+        file.write(f"{data_SC_ION['Ion'][i]} & {data_SC_ION['r$_{min}$'][i]} & {data_SC_ION['E$_{elec}$ (kJ/mol) SAPT'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) GAFF_RESP'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) GAFF_BCC'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) ACT$_{GC}$'][i]:.1f} & {data_SC_ION['E$_{elec}$ (kJ/mol) ACT$_{S}$'][i]:.1f} \\\\\n")
+    file.write("\\hline\n")
+    file.write(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value3:.1f} & {rmsd_value22:.1f} & {rmsd_value2:.1f} \\\\\n")
+    file.write(f"MSE & & & {mse_value1:.1f} & {mse_value3:.1f} & {mse_value22:.1f} & {mse_value2:.1f} \\\\\n")
 
     file.write("\\hline \n")
     file.write("\\end{tabular} \n")
     file.write("\n")
     file.write("\\end{table}")
 
-
-print("\\begin{table}[ht]")
-print("\\centering")
-print("\\caption{Minimum energy distance (\\AA) between ions and amino acid side chain analogs.}")
-print("\\begin{tabular}{lccccccccc}")
-print("\\hline")
-print("Ion & r$_{min}$ & SAPT & TIP4P$_{EW}$ & ACT4S \\\\")
-print("\\hline")
-
-
-for i in range(len(data_SC_ION['Ion'])):
-    print(f"{data_SC_ION['Ion'][i]} & {data_SC_ION['r$_{min}$'][i]} & {data_SC_ION['E$_{elec}$ (kJ/mol) SAPT'][i]} & {data_SC_ION['E$_{elec}$ (kJ/mol) GAFF_RESP'][i]} & {data_SC_ION['E$_{elec}$ (kJ/mol) ACT$_{S}$'][i]}\\\\")
-
-print(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value2:.1f} \\\\")
-
-print("\\hline")
-print("\\end{tabular}")
-print("\\end{table}")
+print("Please check %s" % file_path)
