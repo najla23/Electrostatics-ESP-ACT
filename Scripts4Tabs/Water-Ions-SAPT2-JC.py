@@ -36,11 +36,13 @@ def mse(data, ref_key1, ref_key2):
 rmsd_value1 = rmsd(data, 'E$_{elec}$ (kJ/mol) 4W', 'E$_{elec}$ (kJ/mol) SAPT')
 rmsd_value11 = rmsd(data, 'E$_{elec}$ (kJ/mol) SW', 'E$_{elec}$ (kJ/mol) SAPT')
 rmsd_value2 = rmsd(data, 'E$_{elec}$ (kJ/mol) ACT$_{SS}$', 'E$_{elec}$ (kJ/mol) SAPT')
+rmsd_value22 = rmsd(data, 'E$_{elec}$ (kJ/mol) ACT$_{GC}$', 'E$_{elec}$ (kJ/mol) SAPT')
+
 
 mse_value1 = mse(data, 'E$_{elec}$ (kJ/mol) 4W', 'E$_{elec}$ (kJ/mol) SAPT')
 mse_value11 = mse(data, 'E$_{elec}$ (kJ/mol) SW', 'E$_{elec}$ (kJ/mol) SAPT')
 mse_value2 = mse(data, 'E$_{elec}$ (kJ/mol) ACT$_{SS}$', 'E$_{elec}$ (kJ/mol) SAPT')
-
+mse_value22 = mse(data, 'E$_{elec}$ (kJ/mol) ACT$_{GC}$', 'E$_{elec}$ (kJ/mol) SAPT')
 
 file_path = "ion-water-SAPT2-TIP4Pew-ACT4S.tex"
 
@@ -53,15 +55,15 @@ with open(file_path, "w") as file:
     file.write("\n")
     file.write("\\begin{tabular}{lccccccccc} \n")
     file.write("\\hline \n")
-    file.write("Ion & r$_{min}$ & SAPT & TIP4P-EW & SWM4-NDP & ACM-PG \n\\\\")
+    file.write("Ion & r$_{min}$ & SAPT & TIP4P-EW & SWM4-NDP & GC+PGV & PC+GVS \n\\\\")
     file.write("\\hline \n")
 
 
     for i in range(len(data['Ion'])):
-        file.write(f"{data['Ion'][i]} & {data['r$_{min}$'][i]} & {data['E$_{elec}$ (kJ/mol) SAPT'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) 4W'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) SW'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) ACT$_{SS}$'][i]:.1f} \n\\\\")
+        file.write(f"{data['Ion'][i]} & {data['r$_{min}$'][i]} & {data['E$_{elec}$ (kJ/mol) SAPT'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) 4W'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) SW'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) ACT$_{GC}$'][i]:.1f}  & {data['E$_{elec}$ (kJ/mol) ACT$_{SS}$'][i]:.1f} \n\\\\")
 
-    file.write(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value11:.1f} & {rmsd_value2:.1f} \n\\\\")
-    file.write(f"MSE & & & {mse_value1:.1f} & {mse_value11:.1f} & {mse_value2:.1f} \n\\\\")
+    file.write(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value11:.1f} & {rmsd_value22:.1f} & {rmsd_value2:.1f} \n\\\\")
+    file.write(f"MSE & & & {mse_value1:.1f} & {mse_value11:.1f} & {mse_value22:.1f} & {mse_value2:.1f} \n\\\\")
 
     file.write("\\hline \n")
     file.write("\\end{tabular} \n")

@@ -8,7 +8,7 @@
         "eelec-SAPT": -849.6,
         "eelec-CT": -888.3,
         "eelec-ACT-S": -867.39,
-        "eelec-ACT-G": -814.00
+        "eelec-ACT-G": -861.2
     },
     "Li-Cl": {
         "rmin": 2.021,
@@ -19,7 +19,7 @@
         "eelec-SAPT": -657.1,
         "eelec-CT": -687.5,
         "eelec-ACT-S": -662.65,
-        "eelec-ACT-G": -623.09
+        "eelec-ACT-G": -663.7
     },
     "Li-Br": {
         "rmin": 2.17,
@@ -30,7 +30,7 @@
         "eelec-SAPT": -608.1,
         "eelec-CT": -640.3,
         "eelec-ACT-S": -611.38,
-        "eelec-ACT-G": -583.98
+        "eelec-ACT-G": -628.2
     },
     "Na-F": {
         "rmin": 1.926,
@@ -41,7 +41,7 @@
         "eelec-SAPT": -749.2,
         "eelec-CT": -721.4,
         "eelec-ACT-S": -747.31,
-        "eelec-ACT-G": -746.71
+        "eelec-ACT-G": -740.8
     },
     "Na-Cl": {
         "rmin": 2.361,
@@ -52,7 +52,7 @@
         "eelec-SAPT": -606.9,
         "eelec-CT": -588.5,
         "eelec-ACT-S": -608.17,
-        "eelec-ACT-G": -596.90
+        "eelec-ACT-G": -600.7
     },
     "Na-Br": {
         "rmin": 2.502,
@@ -63,7 +63,7 @@
         "eelec-SAPT": -569.4,
         "eelec-CT": -555.3,
         "eelec-ACT-S": -570.85,
-        "eelec-ACT-G": -561.72
+        "eelec-ACT-G": -576.1
     },
     "K-F": {
         "rmin": 2.171,
@@ -74,7 +74,7 @@
         "eelec-SAPT": -702.8,
         "eelec-CT": -640.0,
         "eelec-ACT-S": -691.66,
-        "eelec-ACT-G": -710.07
+        "eelec-ACT-G": -695.6
     },
     "K-Cl": {
         "rmin": 2.667,
@@ -85,7 +85,7 @@
         "eelec-SAPT": -558.7,
         "eelec-CT": -520.9,
         "eelec-ACT-S": -558.42,
-        "eelec-ACT-G": -558.36
+        "eelec-ACT-G": -555.2
     },
     "K-Br": {
         "rmin": 2.821,
@@ -96,6 +96,6 @@
         "eelec-SAPT": -524.2,
         "eelec-CT": -492.5,
         "eelec-ACT-S": -525.44,
-        "eelec-ACT-G": -525.71
+        "eelec-ACT-G": -526.9
     }
 }
