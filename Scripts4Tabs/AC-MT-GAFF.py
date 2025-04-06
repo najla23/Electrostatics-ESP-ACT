@@ -50,7 +50,7 @@ with open(file_path, "w") as file:
     file.write("\label{tab:ac_ma_ions}\n")
     file.write("\\begin{tabular}{lcccccc} \n")
     file.write("\\hline \n")
-    file.write("Ion & r$_{min}$ & SAPT & GAFF$_{RESP}$ & GAFF$_{BCC}$ & PC+GS & GC+PGV \\\\\n")
+    file.write("Ion & r$_{min}$ & SAPT & GAFF$_{RESP}$ & GAFF$_{BCC}$ & GC+PGV & PC+GS \\\\\n")
     file.write("\\hline \n")
 
 
