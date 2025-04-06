@@ -134,13 +134,13 @@ if __name__ == "__main__":
             outf.write("""\\begin{table}[ht]
 \\centering
 \\caption{%s}
-\\label{tab:sapt}
+\\label{tab:sapt%d}
 \\begin{tabular}{lccc%s}
 \\hline
 Ion pair & r$_{min}$ & \\multicolumn{%d}{c}{E$_{elec}$ (kJ/mol)}\\\\
 & ({\\AA})&                 SAPT0 & PC %s\\\\
 \\hline
-""" % ( caption, cols, 2+len(print_funcs), myesps ) )
+""" % ( caption, T, cols, 2+len(print_funcs), myesps ) )
             print_walz(outf, print_funcs, T)
             outf.write("""\\hline
 \\end{tabular}
