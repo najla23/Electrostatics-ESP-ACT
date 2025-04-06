@@ -48,7 +48,7 @@ with open(file_path, "w") as file:
     file.write("\\centering\n")
     file.write("\\caption{Electrostatic energy (kJ/mol) between alkali halides or water (oxygen) and amino acid side chain analogs, acetate (oxygen), formate (oxygen), methylammonium (nitrogen), ethylammonium (nitrogen) from SAPT2, the Generalized Amber Force Field~\\cite{Wang2004a} with either RESP~\\cite{Bayly1993a} or BCC~\\cite{Jakalian2002a} charges, and two models generated here using the ACT.}\n")
     file.write("\label{tab:ac_ma_ions}\n")
-    file.write("\\begin{tabular}{lccccccccc} \n")
+    file.write("\\begin{tabular}{lcccccc} \n")
     file.write("\\hline \n")
     file.write("Ion & r$_{min}$ & SAPT & GAFF$_{RESP}$ & GAFF$_{BCC}$ & PC+GS & GC+PGV \\\\\n")
     file.write("\\hline \n")
