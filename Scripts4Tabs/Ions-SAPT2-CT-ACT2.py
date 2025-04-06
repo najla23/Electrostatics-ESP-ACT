@@ -32,17 +32,17 @@ def mse(data, ref_key1, ref_key2):
 def dict_to_list_of_lists(data):
     rows = []
     for key, value in data.items():
-        rows.append([key, value.get("rmin", "N/A"),  f"{value.get('eelec-SAPT', 'N/A'):.1f}", f"{value.get('eelec-CT', 'N/A'):.1f}", f"{value.get('eelec-Walz2018a', 'N/A'):.1f}",  f"{value.get('eelec-ACT-G', 'N/A'):.1f}"])
+        rows.append([key, value.get("rmin", "N/A"),  f"{value.get('eelec-SAPT', 'N/A'):.1f}", f"{value.get('eelec-CT', 'N/A'):.1f}", f"{value.get('eelec-Walz2018a', 'N/A'):.1f}",  f"{value.get('eelec-ACT-G', 'N/A'):.1f}", f"{value.get('eelec-ACT-S', 'N/A'):.1f}"])
     return rows
 
 
-headers = ["Ions", "r$_{min}$", "SAPT", "JC", "Walz", "ACM-PG"]
+headers = ["Ions", "r$_{min}$", "SAPT", "JC", "Walz", "GC+PGV", "PC+GVS"]
 
 
 table_string= tabulate(dict_to_list_of_lists(sapt2), headers, tablefmt="latex_raw")
 
-caption = "\\caption{ Minimum energy distance (\\AA) between ions and electrostatic energies from SAPT2, \
-the Joung-Cheatham (JC) model~\cite{Joung2008a}, Walz model with a Gaussian charge distribution~\\cite{Walz2018a}, and  and the ACT/ACM-PG model consisting of a point charge and a Drude particle with a Gaussian charge.}"
+
+caption= "\\caption{Minimum energy distance (\AA) between ions and electrostatic energies from SAPT2 with the aug-cc-pVTZ basis set, the Joung-Cheatham (JC) model~\cite{Joung2008a}, Walz model with a Gaussian charge distribution~\cite{Walz2018a}, and the ACT/PC+GVS model consisting of a point charge and a Drude particle with a Gaussian charge. The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
 
 
 label = "\\label{tab:sapt2_ions}"
@@ -65,8 +65,8 @@ mse_value6 = mse(sapt2, "eelec-Walz2018a", "eelec-SAPT")
 
 
 
-table_with_rmsd = table_string + f"\nRMSD & & & {rmsd_value1:.1f} & {rmsd_value6:.1f} & {rmsd_value3:.1f} \\\\"
-table_with_rmsd = table_with_rmsd + f"\nMSE & & & {mse_value1:.1f} & {mse_value6:.1f} & {mse_value3:.1f} \\\\"
+table_with_rmsd = table_string + f"\nRMSD & & & {rmsd_value1:.1f} & {rmsd_value6:.1f} & {rmsd_value3:.1f} & {rmsd_value2:.1f} \\\\"
+table_with_rmsd = table_with_rmsd + f"\nMSE & & & {mse_value1:.1f} & {mse_value6:.1f} & {mse_value3:.1f} & {mse_value2:.1f} \\\\"
 
 file_path = "Ions-sapt2-JC-Walz2018a-ACT.tex"
 
@@ -85,43 +85,3 @@ print("\\end{table}")
 
 
 
-#####################################################################################
-
-def dict_to_list_of_lists(data):
-    rows = []
-    for key, value in data.items():
-        rows.append([key, value.get("rmin", "N/A"), f"{value.get('total-SAPT', 'N/A'):.1f}", f"{value.get('total-CT', 'N/A'):.1f}", f"{value.get('total-Walz2018a', 'N/A'):.1f}" ])
-    return rows
-
-headers = ["Ions", "r$_{min}$", "SAPT$_t$", "JT$_t$", "Walz$_t$"]
-
-label = "\\label{tab:total_jc_walz}"
-table_string= tabulate(dict_to_list_of_lists(sapt2), headers, tablefmt="latex_raw")
-
-caption = "\\caption{ Minimum energy distance (\\AA) between ions and total energies (kJ/mol) from SAPT2, \
-the Joung-Cheatham model (JC, point charge)~\cite{Joung2008a}, and Walz model with a Gaussian charge distribution~\\cite{Walz2018a}.}"
-
-
-
-rmsd_value4 = rmsd(sapt2, "total-CT", "total-SAPT")
-rmsd_value5 = rmsd(sapt2, "total-Walz2018a", "total-SAPT")
-
-mse_value4 = mse(sapt2, "total-CT", "total-SAPT")
-mse_value5 = mse(sapt2, "total-Walz2018a", "total-SAPT")
-
-
-table_with_rmsd = table_string+ f"\nRMSD & & & {rmsd_value4:.2f} & {rmsd_value5:.2f} \\\\"
-table_with_rmsd = table_with_rmsd + f"\nMSE & & & {mse_value4:.2f} & {mse_value5:.2f} \\\\"
-
-file_path = "Total-sapt2-JC-Walz2018a.tex"
-
-with open(file_path, "w") as file:
-    file.write("\\begin{table}[ht]\n")
-    file.write("\\centering\n")
-    file.write(caption+ "\n" + label + "\n" +table_with_rmsd + "\n")
-    file.write("\\end{table}\n")
-
-print("\\begin{table}[ht]")
-print("\\centering")
-print(table_with_rmsd + "\n" + caption)
-print("\\end{table}")
