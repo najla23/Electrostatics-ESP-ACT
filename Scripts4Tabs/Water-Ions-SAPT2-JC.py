@@ -49,42 +49,24 @@ file_path = "ion-water-SAPT2-TIP4Pew-ACT4S.tex"
 with open(file_path, "w") as file:
     file.write("\\begin{table}[ht]\n")
     file.write("\\centering\n")
-    file.write("\\caption{Minimum energy distance (\\AA) between ions and water oxygen/hydrogen from Experiment (ref.~\\citenum{Heyrovska2006a}), and minimized water dimer (ref.~\\citenum{temelso2011benchmark}). Electrostatic energies are reprted in kJ/mol from SAPT2, the ACT/ACM-PG model, TIP4P-EW~\cite{Horn2004a}, and SWM4-NDP~\cite{lamoureux2006polarizable}.}")
+    file.write("\\caption{Minimum energy distance (\\AA) between ions and water oxygen/hydrogen from Experiment (ref.~\\citenum{Heyrovska2006a}), and minimized water dimer (ref.~\\citenum{temelso2011benchmark}). Electrostatic energies are reported in kJ/mol from SAPT2, TIP4P-Ew~\cite{Horn2004a} with Joung-Cheatham ions~\\cite{Joung2008a}, and SWM4-NDP~\cite{Lamoureux2006a} with ions due to Yu {\\em et al.}~\\cite{Yu2010a} and two models derived here using ACT}")
     file.write("\n")
     file.write("\label{tab:ion_water2}")
     file.write("\n")
-    file.write("\\begin{tabular}{lccccccccc} \n")
+    file.write("\\begin{tabular}{lcccccc} \n")
     file.write("\\hline \n")
-    file.write("Ion & r$_{min}$ & SAPT & TIP4P-EW & SWM4-NDP & GC+PGV & PC+GVS \n\\\\")
+    file.write("Ion & r$_{min}$ & SAPT & TIP4P-Ew & SWM4-NDP & GC+PGV & PC+GVS\\\\\n")
     file.write("\\hline \n")
 
 
     for i in range(len(data['Ion'])):
-        file.write(f"{data['Ion'][i]} & {data['r$_{min}$'][i]} & {data['E$_{elec}$ (kJ/mol) SAPT'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) 4W'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) SW'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) ACT$_{GC}$'][i]:.1f}  & {data['E$_{elec}$ (kJ/mol) ACT$_{SS}$'][i]:.1f} \n\\\\")
-
-    file.write(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value11:.1f} & {rmsd_value22:.1f} & {rmsd_value2:.1f} \n\\\\")
-    file.write(f"MSE & & & {mse_value1:.1f} & {mse_value11:.1f} & {mse_value22:.1f} & {mse_value2:.1f} \n\\\\")
+        file.write(f"{data['Ion'][i]} & {data['r$_{min}$'][i]} & {data['E$_{elec}$ (kJ/mol) SAPT'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) 4W'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) SW'][i]:.1f} & {data['E$_{elec}$ (kJ/mol) ACT$_{GC}$'][i]:.1f}  & {data['E$_{elec}$ (kJ/mol) ACT$_{SS}$'][i]:.1f} \\\\\n")
+    file.write("\\hline\n")
+    file.write(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value11:.1f} & {rmsd_value22:.1f} & {rmsd_value2:.1f}\\\\\n")
+    file.write(f"MSE & & & {mse_value1:.1f} & {mse_value11:.1f} & {mse_value22:.1f} & {mse_value2:.1f} \\\\\n")
 
     file.write("\\hline \n")
     file.write("\\end{tabular} \n")
     file.write("\\end{table}")
 
-
-print("\\begin{table}[ht]")
-print("\\centering")
-print("\\caption{Minimum energy distance (\\AA) between ions and water oxygen/hydrogen and water-water from Experiment (ref.~\\citenum{Heyrovska2006a})}")
-print("\\begin{tabular}{lccccccccc}")
-print("\\hline")
-print("Ion & r$_{min}$ & SAPT & TIP4P-EW & ACT (P+G) \\\\")
-#print("& SAPT2+ & TIP4Pew & ACT$_{P+G} & ACT$_{P+S}\\\\")
-print("\\hline")
-
-
-for i in range(len(data['Ion'])):
-    print(f"{data['Ion'][i]} & {data['r$_{min}$'][i]} & {data['E$_{elec}$ (kJ/mol) SAPT'][i]} & {data['E$_{elec}$ (kJ/mol) 4W'][i]} & {data['E$_{elec}$ (kJ/mol) ACT$_{SS}$'][i]}\\\\")
-
-print(f"RMSD & & & {rmsd_value1:.1f} & {rmsd_value2:.1f} \\\\")
-
-print("\\hline")
-print("\\end{tabular}")
-print("\\end{table}")
+print("Please check file %s" % file_path)
