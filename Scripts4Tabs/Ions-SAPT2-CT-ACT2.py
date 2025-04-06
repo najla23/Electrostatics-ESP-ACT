@@ -75,12 +75,14 @@ with open(file_path, "w") as file:
     file.write("\\begin{table}[ht]\n")
     file.write("\\centering\n")
     file.write(caption + "\n" + label + "\n" + table_with_rmsd + "\n")
+    file.write("\\end{tabular}\n")
     file.write("\\end{table}\n")
 
 
 print("\\begin{table}[ht]")
 print("\\centering")
 print(table_with_rmsd + "\n" + caption)
+print("\\end{tabular}")
 print("\\end{table}")
 
 
