@@ -19,6 +19,7 @@ Scripts for reproducing results in the scientific article
 - `Selection/` - Data sets and a script to generate random test and train compounds 
 - `Tab_Script/` - Reproduction of tables presented in the article
 - `RMSD_Compound/` - RMSD values with respect to SAPT for all studied compounds, including our ACT model and several widely used models. 
+- `ESP-RMSD-Histogram/` - ESP at the HF/6-31G** level of theory for 5100 compounds, Fig S1
 
 ## Requirements
 
