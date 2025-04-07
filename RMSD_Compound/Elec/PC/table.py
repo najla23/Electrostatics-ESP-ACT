@@ -29,7 +29,7 @@ def extract_table_from_log(log_file):
 def save_table_as_latex(table, output_file):
     with open(output_file, 'w') as file:
         file.write("\\begin{table}[ht]\n")
-        file.write(f"\\caption{{Parameters for $\zeta$ in {b} trained on the sum of the electrostatic energy.}}\n")
+        file.write(f"\\caption{{Parameters in {b} trained on the electrostatic energy.}}\n")
         file.write("\\begin{tabular}{|c|c|c|}\n")
         file.write("\\hline\n")
         file.write("CLASS & NAME & BEST (Train) \\\\ \n")
