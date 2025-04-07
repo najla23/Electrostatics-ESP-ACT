@@ -2,7 +2,7 @@
 import os
 
 a="SC-Water-Ion"
-b="PC+GVS"
+b="GC"
 
 def extract_table_from_log(log_file):
     table = []
