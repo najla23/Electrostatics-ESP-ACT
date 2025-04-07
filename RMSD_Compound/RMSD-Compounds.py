@@ -45,7 +45,7 @@ if __name__ == "__main__":
     texfn = "rmsdtable.tex"
     with open(texfn, "w") as outf:
         outf.write("\\begin{longtable}{lcccccccccc}\n")
-        outf.write("\\caption{Root mean square deviation (kJ/mol) from SAPT electrostatics per compound dimer for the different ACT models and widely-used models, Mulliken, Hirshfeld, ESP, and CM5. N is the number of conformations of each dimer used.}\\\\\n")
+        outf.write("\\caption{Root mean square deviation (kJ/mol) from SAPT2+(CCD)$\delta$MP2 electrostatics per compound dimer for the different ACT models and widely-used models, Mulliken, Hirshfeld, ESP, and CM5. N is the number of conformations of each dimer used.}\\\\\n")
         outf.write("\\hline\n")
         outf.write("Dimer & N ")
         for md in alldata.keys():
