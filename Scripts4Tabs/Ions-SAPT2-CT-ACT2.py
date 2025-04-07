@@ -42,7 +42,7 @@ headers = ["Ions", "r$_{min}$", "SAPT", "JC", "Walz {\em et al.}", "GC+PGV", "PC
 table_string= tabulate(dict_to_list_of_lists(sapt2), headers, tablefmt="latex_raw")
 
 
-caption= "\\caption{Minimum energy distance (\AA) between ions and electrostatic energies from SAPT2 with the aug-cc-pVTZ basis set, the Joung-Cheatham (JC) model~\cite{Joung2008a}, Walz {\em et al.} model with a Gaussian charge distribution~\cite{Walz2018a}, and the ACT/PC+GVS model consisting of a point charge and a Drude particle with a Gaussian charge. The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
+caption= "\\caption{Minimum energy distance (\AA) between ions and electrostatic energies from SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set, the Joung-Cheatham (JC) model~\cite{Joung2008a}, Walz {\em et al.} model with a Gaussian charge distribution~\cite{Walz2018a}, and the ACT/PC+GVS model consisting of a point charge and a Drude particle with a Gaussian charge. The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
 
 
 label = "\\label{tab:sapt2_ions}"
