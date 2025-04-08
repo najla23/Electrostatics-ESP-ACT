@@ -77,6 +77,8 @@ myqt = {
     "Hirshfeld": "Hirshfeld1977a",
     "ESP": "Besler1990a",
     "CM5": "Marenich2012a",
+    "BCC": "Jakalian2000a",
+    "RESP": "Bayly1993a",
     "ACM": "ACT"
 }
 
@@ -90,6 +92,8 @@ charge_models = [
     ("Hirshfeld", "1"), ("Hirshfeld", "2"),
     ("ESP", "1"), ("ESP", "2"),
     ("CM5", "1"), ("CM5", "2"),
+    ("BCC", "1"), ("BCC","2"),
+    ("RESP","1"), ("RESP","2"),
     ("ACM", "1"), ("ACM", "2"), ("ACM", "3"),
     ("ACM", "4"), ("ACM", "5"), ("ACM", "6"),
     ("ACM", "7"), ("ACM", "8"), ("ACM", "9"),
