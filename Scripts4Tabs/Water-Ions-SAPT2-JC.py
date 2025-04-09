@@ -49,7 +49,7 @@ file_path = "ion-water-SAPT2-TIP4Pew-ACT4S.tex"
 with open(file_path, "w") as file:
     file.write("\\begin{table}[ht]\n")
     file.write("\\centering\n")
-    file.write("\\caption{Minimum energy distance (\\AA) between ions and water oxygen/hydrogen from Experiment (ref.~\\citenum{Heyrovska2006a}), and minimized water dimer (ref.~\\citenum{temelso2011benchmark}). Electrostatic energies are reported in kJ/mol from SAPT2, TIP4P-Ew~\cite{Horn2004a} with Joung-Cheatham ions~\\cite{Joung2008a}, and SWM4-NDP~\cite{Lamoureux2006a} with ions due to Yu {\\em et al.}~\\cite{Yu2010a} and two models derived here using ACT}")
+    file.write("\\caption{\\textbf{Water-ion energies at their energy minimum.} Minimum energy distance (\\AA) between ions and water oxygen/hydrogen from Experiment (ref.~\\citenum{Heyrovska2006a}), and minimized water dimer (ref.~\\citenum{temelso2011benchmark}). Electrostatic energies are reported in kJ/mol from SAPT2, TIP4P-Ew~\cite{Horn2004a} with Joung-Cheatham ions~\\cite{Joung2008a}, and SWM4-NDP~\cite{Lamoureux2006a} with ions due to Yu {\\em et al.}~\\cite{Yu2010a} and two models derived here using ACT}")
     file.write("\n")
     file.write("\label{tab:ion_water2}")
     file.write("\n")
