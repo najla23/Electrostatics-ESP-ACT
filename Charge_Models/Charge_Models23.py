@@ -88,19 +88,27 @@ allelecs = ""
 labels = ""
 
 charge_models = [
+    ("header", "Existing charge models" ),
     ("Mulliken", "1"), ("Mulliken", "2"),
     ("Hirshfeld", "1"), ("Hirshfeld", "2"),
     ("ESP", "1"), ("ESP", "2"),
     ("CM5", "1"), ("CM5", "2"),
     ("BCC", "1"), ("BCC","2"),
     ("RESP","1"), ("RESP","2"),
+    ("header", "Non-polarizable ACT models" ),
     ("ACM", "1"), ("ACM", "2"), ("ACM", "3"),
     ("ACM", "4"), ("ACM", "5"), ("ACM", "6"),
     ("ACM", "7"), ("ACM", "8"), ("ACM", "9"),
-    ("ACM", "10"), ("ACM", "11"), ("ACM", "12"), ("ACM", "13"), ("ACM", "14")
+    ("ACM", "10"), ("ACM", "11"), ("ACM", "12"), 
+    ("header", "Polarizable ACT model" ),
+    ("ACM", "13"), ("ACM", "14")
 ]
 
+nparams = { "1": 32, "3": 32, "5": 48, "7": 48, "9": 55, "11": 55, "13": 123 }
+
 for qt, suffix in charge_models:
+    if qt == "header":
+        continue
     mytable[qt + suffix] = run_one("q" + qt, suffix)
     newcoul = f"COULOMB-{qt}{suffix}.xvg"
     run_command(f"mv COULOMB.xvg {newcoul}")
@@ -119,13 +127,15 @@ run_command(f"viewxvg -f {allelecs} -label {labels} -ls None -mk -res -noshow -p
 with open("legacy.tex", "w") as outf:
     outf.write("\\begin{table}[htb]\n")
     outf.write("\\centering\n")
-    outf.write("\\caption{Root mean square deviation (RMSE) and mean signed error (MSE) of electrostatic energies (Elec, kJ/mol) and the sum of electrostatics and induction (Elec+Induc, kJ/mol) for popular charge models compared to SAPT. The dataset consisted of 78 dimers, and the number of data points (energies) is indicated. For the point charge (PC) and Gaussian charge (GC) models, the training targets are indicated, and RMSD and MSE values corresponding to the training set are indicated in bold. The polarizable point charge + Gaussian shell (PC+GS) model was trained on electrostatic and induction energies in one step.}\n")
+    
+    outf.write("\\caption{Root mean square deviation (RMSE) and mean signed error (MSE) of electrostatic energies (Elec, kJ/mol) and the sum of electrostatics and induction (Elec+Induc, kJ/mol) for popular charge models compared to SAPT2+(CCD)$\\delta$MP2 with the aug-cc-pVTZ basis set. The dataset consisted of 77 dimers (Table S8), and the number of data points (energies) is indicated as N. For the point charge (PC) and Gaussian charge (GC) models, the training targets are indicated, and RMSD and MSE values corresponding to the training set are indicated in bold. A non-polarizable model with virtual sites with a Gaussian distributed charge (on anions and potassium ion only) is labeled as GC+PGV. The polarizable point charge + Gaussian virtual site and shell (PC+GVS) model was trained on electrostatic and induction energies in one step. The \"test\" and \"train\" labels in the table for Mulliken, Hirshfeld, ESP, CM5, BCC, and RESP do not imply that we trained them. Instead, they indicate that we evaluated the models using compounds randomly generated as test or training sets (Table S6). The RMSD and MSE were calculated with respect to the SAPT electrostatic energy. \#P indicates the number of parameters in the model.}\n")
+    
+    
     outf.write("\\label{legacy}\n")
-    outf.write("\\begin{tabular}{lcccccccccccc}\n")
+    outf.write("\\begin{tabular}{lccccccc}\n")
     outf.write("\\hline\n")
-    outf.write(" & Target & N & \\multicolumn{2}{c}{Elec}  & \\multicolumn{2}{c}{Elec+Induc}\\\\\n")
-    outf.write("Model & & & RMSD & MSE & RMSD & MSE \\\\\n")
-    outf.write("\\hline\n")
+    outf.write(" & Target & \# P & N & \\multicolumn{2}{c}{Elec}  & \\multicolumn{2}{c}{Elec+Induc}\\\\\n")
+    outf.write("Model & & & & RMSD & MSE & RMSD & MSE \\\\\n")
 
     label_map = {
         "ACM1": ("PC (Train)", "Elec"),
@@ -145,6 +155,10 @@ with open("legacy.tex", "w") as outf:
     }
 
     for qt, suffix in charge_models:
+        if qt == "header":
+            outf.write("\\hline\n")
+            outf.write("\\multicolumn{8}{c}{\\bf %s}\\\\\n" % suffix)
+            continue
         qt_with_suffix = qt + suffix
         cite = f"~\\cite{{{myqt[qt]}}}" if qt != "ACM" else ""
         label = label_map.get(qt_with_suffix, (qt, ""))[0]
@@ -172,7 +186,10 @@ with open("legacy.tex", "w") as outf:
             mse_elec_str = f"\\textbf{{{elec_data['MSE']}}}" if "Train" in label else f"{elec_data['MSE']}"
         else:
             mse_elec_str = na
-        outf.write(f"{label}{cite} & {star} & {coul_data['N']} & {rmsd_coul_str} & {mse_coul_str} & {rmsd_elec_str} & {mse_elec_str} \\\\\n")
+        np = ""
+        if qt == "ACM" and suffix in nparams:
+            np = nparams[suffix]
+        outf.write(f"{label}{cite} & {star} & {coul_data['N']} & {np} & {rmsd_coul_str} & {mse_coul_str} & {rmsd_elec_str} & {mse_elec_str} \\\\\n")
 
     outf.write("\\hline\n")
     outf.write("\\end{tabular}\n")
