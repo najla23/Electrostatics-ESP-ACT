@@ -1,4 +1,4 @@
-# Accurate-Electrostatics-for-Physics-Based-Force-Fields
+# Accurate-Electrostatics-for-Biomolecular-Systems
 Scripts for reproducing results in the scientific article
 [_Accurate Electrostatics for Biomolecular Systems through Machine Learning_].
 
