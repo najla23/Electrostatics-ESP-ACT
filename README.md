@@ -1,6 +1,6 @@
 # Accurate-Electrostatics-for-Physics-Based-Force-Fields
 Scripts for reproducing results in the scientific article
-[_Accurate Electrostatics for Physics-Based Force Fields through Machine Learning_].
+[_Accurate Electrostatics for Biomolecular Systems through Machine Learning_].
 
 
 ## Directory Layout
@@ -20,6 +20,8 @@ Scripts for reproducing results in the scientific article
 - `Tab_Script/` - Reproduction of tables presented in the article
 - `RMSD_Compound/` - RMSD values with respect to SAPT for all studied compounds, including our ACT model and several widely used models. 
 - `ESP-RMSD-Histogram/` - ESP at the HF/6-31G** level of theory for 5100 compounds, Fig S1
+- `RMSD_Compound/Elec/` - Training files on electorsrtatic energy from SAPT2+(CCD)-δMP for PC, GC, PC+GV, and PC+GVS models.  
+- `RMSD_Compound/AllElec/` - Training files on electorsrtatic and induction energies from SAPT2+(CCD)-δMP2 for PC, GC and, PC+G models.
 
 ## Requirements
 
