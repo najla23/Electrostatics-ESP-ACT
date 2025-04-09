@@ -1,11 +1,11 @@
 # Accurate-Electrostatics-for-Biomolecular-Systems
-Scripts for reproducing results in the scientific article
+Scripts, force field files for widely-used and Alexandria force fields (only electrostatic part), and electrostatic potential (ESP) fitting for reproducing results in the scientific article
 [_Accurate Electrostatics for Biomolecular Systems through Machine Learning_].
 
 
 ## Directory Layout
 
-- `Analytical_Fitting/` - Analytical fitting for the quantum chemical electrostatic potential (ESP) and electrostatic calculations for different charge models, e.g. a (positive) point charge with either one Gaussian or 1S Slater distributed charge, or a
+- `Analytical_Fitting/` - Analytical fitting for the quantum chemical ESP and electrostatic calculations for different charge models, e.g. a (positive) point charge with either one Gaussian or 1S Slater distributed charge, or a
    point charge with two Gaussian charges or a point charge with a 1S and a 2S Slater charge.
 - `Antechamber/` - Force field files 
 - `Charge_Models/` - Reproduction of Table 1, Comparison of electrostatic energies from Alexandria and other popular charge models, e.g. ESP. Note that according to the definition of SAPT, we 
