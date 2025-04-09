@@ -175,37 +175,37 @@
   <interaction type="POLARIZATION" function="POLARIZATION" canswap="true">
     <parameterlist identifier="o3_s">
       <parameter type="alpha" unit="Angstrom3" value="0.978253" uncertainty="0" minimum="0.4" maximum="2.5" ntrain="3" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="kshell" unit="kJ/mol nm2" value="81892.3" uncertainty="0" minimum="81892.3" maximum="81892.3" ntrain="1" mutability="Dependent" nonnegative="yes"/>
+      <parameter type="kshell" unit="kJ/mol nm2" value="81892.3" uncertainty="0" minimum="81892.3" maximum="81892.3" ntrain="0" mutability="Dependent" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="0" uncertainty="0" minimum="0" maximum="500000000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Br-_s">
-      <parameter type="alpha" unit="Angstrom3" value="5.262" uncertainty="0" minimum="3" maximum="7" ntrain="10" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="alpha" unit="Angstrom3" value="5.262" uncertainty="0" minimum="5.262" maximum="5.262" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="1673600000" uncertainty="0" minimum="1673600000" maximum="1673600000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Cl-_s">
-      <parameter type="alpha" unit="Angstrom3" value="3.969" uncertainty="0" minimum="2" maximum="5" ntrain="11" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="alpha" unit="Angstrom3" value="3.969" uncertainty="0" minimum="3.969" maximum="3.969" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="0" uncertainty="0" minimum="0" maximum="500000000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="F-_s">
-      <parameter type="alpha" unit="Angstrom3" value="1.786" uncertainty="0" minimum="1" maximum="2" ntrain="6" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="alpha" unit="Angstrom3" value="1.786" uncertainty="0" minimum="1.786" maximum="1.786" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="0" uncertainty="0" minimum="0" maximum="500000000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="K+_s">
-      <parameter type="alpha" unit="Angstrom3" value="0.830" uncertainty="0" minimum="0.4" maximum="1.2" ntrain="8" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="alpha" unit="Angstrom3" value="0.830" uncertainty="0" minimum="0.830" maximum="1.2" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="0" uncertainty="0" minimum="0" maximum="500000000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Li+_s">
-      <parameter type="alpha" unit="Angstrom3" value="0.032" uncertainty="0" minimum="0" maximum="0.2" ntrain="6" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="alpha" unit="Angstrom3" value="0.032" uncertainty="0" minimum="0.032" maximum="0.032" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="0" uncertainty="0" minimum="0" maximum="500000000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Na+_s">
-      <parameter type="alpha" unit="Angstrom3" value="0.157" uncertainty="0" minimum="0.1" maximum="0.6" ntrain="9" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="alpha" unit="Angstrom3" value="0.157" uncertainty="0" minimum="0.157" maximum="0.157" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="fchyper" unit="kJ/mol nm4" value="0" uncertainty="0" minimum="0" maximum="500000000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>    
