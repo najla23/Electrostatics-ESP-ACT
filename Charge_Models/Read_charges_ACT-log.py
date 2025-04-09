@@ -107,7 +107,7 @@ def save_data_as_latex(data, output_dir):
     with open(combined_output_file, 'w') as file:
         for compound in compounds_of_interest:
             file.write("\\begin{table}[ht]\n")
-            file.write(f"\\caption{{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), and Point core+Gaussian shell (PC+GS).  Partial charges for the PC and GC models trained on either electrostatic energy (elec) or the sum of the electrostatic and induction energy  (elec+induc) from the SAPT2+(CCD)$\delta$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}}\n")
+            file.write(f"\\caption{{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), and Point core+Gaussian shell (PC+GVS).  Partial charges for the PC and GC models trained on either electrostatic energy (elec) or the sum of the electrostatic and induction energy  (elec+induc) from the SAPT2+(CCD)$\delta$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GVS model, trained on the sum of the electrostatic and induction energy, are also provided.}}\n")
             file.write("\\begin{tabular}{lccccccc}\n")
             file.write("\\hline\n")
             file.write(" Atom & ESP & ACM-P$_elec$ & ACM-P$_elec+induc$ & ACM-G$_elec$ & ACM-G$_elec+induc$ &  ACM-G2$_elec$ & ACM-G2$_elec+induc$ & \\multicolumn{3}{c}{ACM-PG} \\\\\n")
