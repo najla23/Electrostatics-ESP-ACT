@@ -181,7 +181,7 @@
     </parameterlist>
     <parameterlist identifier="Br-_s">
       <parameter type="alpha" unit="Angstrom3" value="5.262" uncertainty="0" minimum="3" maximum="7" ntrain="10" mutability="Fixed" nonnegative="yes"/>
-      <parameter type="fchyper" unit="kJ/mol nm4" value="1673600000" uncertainty="0" minimum="1673600" maximum="1673600" ntrain="0" mutability="Fixed" nonnegative="yes"/>
+      <parameter type="fchyper" unit="kJ/mol nm4" value="1673600000" uncertainty="0" minimum="1673600000" maximum="1673600000" ntrain="0" mutability="Fixed" nonnegative="yes"/>
       <parameter type="rhyper" unit="nm" value="0.02" uncertainty="0" minimum="0" maximum="0.05" ntrain="0" mutability="Fixed" nonnegative="yes"/>
     </parameterlist>
     <parameterlist identifier="Cl-_s">
