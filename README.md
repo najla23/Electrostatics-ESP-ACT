@@ -9,7 +9,7 @@ Scripts, force field files for widely-used and Alexandria force fields (only ele
    point charge with two Gaussian charges or a point charge with a 1S and a 2S Slater charge.
 - `Antechamber/` - Force field files 
 - `Charge_Models/` - Reproduction of Table 1, Comparison of electrostatic energies from Alexandria and other popular charge models, e.g. ESP. Note that according to the definition of SAPT, we 
-   need the sum of electrostatic and induction energies from SAPT to obtain the correct electrostatic energy. 
+   need the sum of electrostatic and induction energies from SAPT to obtain the correct electrostatic energy. Reproduction of partial charges from log files- Tables S9-S14.  
 - `Database/` - SAPT2+(CCD)-δMP2 database for training and test 
 - `ESP_Alkali_Halides/` - ESP from the Hartree-Fock level of theory with the aug-cc-pVTZ basis setfor fitting 
 - `Fig_Script/` - Reproduction of the figure 2B,S2 presented in the article
