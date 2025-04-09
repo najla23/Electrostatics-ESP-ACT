@@ -17,6 +17,8 @@ def extract_data_from_log(log_files):
         "ACM-I": {compound: [] for compound in compounds_of_interest},
         "ACM-G": {compound: [] for compound in compounds_of_interest},
         "ACM-S": {compound: [] for compound in compounds_of_interest},
+        "ACM-G2": {compound: [] for compound in compounds_of_interest},
+        "ACM-S2": {compound: [] for compound in compounds_of_interest},
         "ACM-H": {compound: [] for compound in compounds_of_interest}
     }
 
@@ -34,7 +36,11 @@ def extract_data_from_log(log_files):
         elif 'elec-g' in log_file:
             file_type = "ACM-G"
         elif 'allelec-s' in log_file:
-            file_type = "ACM-S"            
+            file_type = "ACM-S"
+        elif 'elec-g2' in log_file:
+            file_type = "ACM-G2"
+        elif 'allelec-s2' in log_file:
+            file_type = "ACM-S2"    
         elif 'elec-h' in log_file:
             file_type = "ACM-H"
         else:
@@ -68,7 +74,7 @@ def extract_data_from_log(log_files):
                         if len(columns) > 4 and columns[0].isdigit():
                             atom_type = columns[2]
                             acm_value = columns[3]
-                            if file_type in ["ESP", "ACM-P", "ACM-I", "ACM-G", "ACM-S"]:
+                            if file_type in ["ESP", "ACM-P", "ACM-I", "ACM-G", "ACM-S", "ACM-G2", "ACM-S2"]:
                                 data[file_type][current_compound].append((atom_type, acm_value, "", "", ""))
                             elif file_type == "ACM-H":
                                 if "_s" in atom_type:
@@ -104,7 +110,7 @@ def save_data_as_latex(data, output_dir):
             file.write(f"\\caption{{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), and Point core+Gaussian shell (PC+GS).  Partial charges for the PC and GC models trained on either electrostatic energy (elec) or the sum of the electrostatic and induction energy  (elec+induc) from the SAPT2+(CCD)$\delta$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}}\n")
             file.write("\\begin{tabular}{lccccccc}\n")
             file.write("\\hline\n")
-            file.write(" Atom & ESP & PC_$e$ & PC_${ei}$ & GC_$e$ & GC_${ei}$ & \\multicolumn{3}{c}{PC+GS} \\\\\n")
+            file.write(" Atom & ESP & ACM-P$_elec$ & ACM-P$_elec+induc$ & ACM-G$_elec$ & ACM-G$_elec+induc$ &  ACM-G2$_elec$ & ACM-G2$_elec+induc$ & \\multicolumn{3}{c}{ACM-PG} \\\\\n")
             file.write(" & & & & core & shell & total \\\\\n")
             file.write("\\hline\n")
 
@@ -132,7 +138,17 @@ def save_data_as_latex(data, output_dir):
             tuple(round(element, 2) if isinstance(element, (int, float)) else element for element in value)
             if isinstance(value, tuple) else round(value, 2) if isinstance(value, (int, float)) else value
             for value in data["ACM-S"].get(compound, [])
-            ]                       
+            ]
+            acm_g3_data = [
+            tuple(round(element, 2) if isinstance(element, (int, float)) else element for element in value)
+            if isinstance(value, tuple) else round(value, 2) if isinstance(value, (int, float)) else value
+            for value in data["ACM-G2"].get(compound, [])
+            ]
+            acm_g4_data = [
+            tuple(round(element, 2) if isinstance(element, (int, float)) else element for element in value)
+            if isinstance(value, tuple) else round(value, 2) if isinstance(value, (int, float)) else value
+            for value in data["ACM-S2"].get(compound, [])
+            ]
             acm_h_data = [
             tuple(round(element, 6) if isinstance(element, (int, float)) else element for element in value)
             if isinstance(value, tuple) else round(value, 6) if isinstance(value, (int, float)) else value
@@ -148,12 +164,14 @@ def save_data_as_latex(data, output_dir):
                 acm_p2_value = next((val for val in acm_p2_data if val[0] == atom_type), ("", "", ""))
                 acm_g_value = next((val for val in acm_g_data if val[0] == atom_type), ("", "", ""))
                 acm_g2_value = next((val for val in acm_g2_data if val[0] == atom_type), ("", "", ""))
+                acm_g4_value = next((val for val in acm_g_data if val[0] == atom_type), ("", "", ""))
+                acm_g3_value = next((val for val in acm_g2_data if val[0] == atom_type), ("", "", ""))
                 acm_h_value = next((val for val in acm_h_data if val[0] == atom_type), ("", "", "", ""))
                 core_value = acm_h_value[1] if acm_h_value[1] != "N/A" else "N/A"
                 shell_value = acm_h_value[2] if acm_h_value[2] != "N/A" else "N/A"
                 total_value = acm_h_value[3] if acm_h_value[3] != "N/A" else "N/A"
 
-                file.write(f" {atom_type} & {esp_value} & {acm_p_value[1]} & {acm_p2_value[1]} & {acm_g_value[1]} &  {acm_g2_value[1]} & {core_value} & {shell_value} & {total_value} \\\\\n")
+                file.write(f" {atom_type} & {esp_value} & {acm_p_value[1]} & {acm_p2_value[1]} & {acm_g_value[1]} &  {acm_g2_value[1]} & {acm_g3_value[1]} &  {acm_g4_value[1]} & {core_value} & {shell_value} & {total_value} \\\\\n")
 
             file.write("\\hline\n")
             file.write("\\end{tabular}\n")
@@ -163,6 +181,8 @@ log_files = [
     os.path.join(os.getcwd(), 'train_ff-ESP.log'),
     os.path.join(os.getcwd(), 'tune_ff-elec-g.log'),
     os.path.join(os.getcwd(), 'tune_ff-allelec-s.log'),
+    os.path.join(os.getcwd(), 'tune_ff-elec-g2.log'),
+    os.path.join(os.getcwd(), 'tune_ff-allelec-s2.log'),
     os.path.join(os.getcwd(), 'tune_ff-elec-p.log'),
     os.path.join(os.getcwd(), 'tune_ff-allelec-i.log'),
     os.path.join(os.getcwd(), 'tune_ff-elec-h.log')
