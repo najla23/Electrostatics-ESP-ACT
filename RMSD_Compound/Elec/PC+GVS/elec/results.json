@@ -1,0 +1,66 @@
+{
+    "formate#lithium": {
+        "QM": "-734.50",
+        "ACT": -797.75
+    },
+    "formate#sodium": {
+        "QM": "-673.98",
+        "ACT": -673.45
+    },
+    "formate#potassium": {
+        "QM": "-604.73",
+        "ACT": -571.06
+    },
+    "formate#water": {
+        "QM": "-136.61",
+        "ACT": -116.47
+    },
+    "acetate#lithium": {
+        "QM": "-624.68",
+        "ACT": -642.31
+    },
+    "acetate#sodium": {
+        "QM": "-646.24",
+        "ACT": -632.63
+    },
+    "acetate#potassium": {
+        "QM": "-574.45",
+        "ACT": -544.9
+    },
+    "acetate#water": {
+        "QM": "-142.25",
+        "ACT": -116.26
+    },
+    "methylammonium#fluoride": {
+        "QM": "-458.91",
+        "ACT": -455.35
+    },
+    "methylammonium#chloride": {
+        "QM": "-452.92",
+        "ACT": -438.6
+    },
+    "methylammonium#bromide": {
+        "QM": "-434.94",
+        "ACT": -420.65
+    },
+    "methylammonium#water": {
+        "QM": "-100.75",
+        "ACT": -112.52
+    },
+    "ethylammonium#fluoride": {
+        "QM": "-440.31",
+        "ACT": -426.93
+    },
+    "ethylammonium#chloride": {
+        "QM": "-399.66",
+        "ACT": -393.29
+    },
+    "ethylammonium#bromide": {
+        "QM": "-385.98",
+        "ACT": -378.72
+    },
+    "ethylammonium#water": {
+        "QM": "-99.48",
+        "ACT": -108.89
+    }
+}
