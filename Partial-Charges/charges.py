@@ -138,7 +138,7 @@ def save_data_as_latex(data, output_dir):
             file.write("\\hspace{-1cm}\n")
             file.write("\\begin{tabular}{lcccccccccccccccc}\n")
             file.write("\\hline\n")
-            file.write(fr" Atom & ESP & PC$_{{e}}$ & PC$_{{ei}}$ & GC$_{{e}}$ & GC$_{{ei}}$ & GC+PGV$_{{e}}$ & GC+PGV$_{{ei}}$ & \multicolumn{{3}}{{c}}{{PC+GVS}} \\\\")
+            file.write(fr" Atom type & ESP & PC$_{{e}}$ & PC$_{{ei}}$ & GC$_{{e}}$ & GC$_{{ei}}$ & GC+PGV$_{{e}}$ & GC+PGV$_{{ei}}$ & \multicolumn{{3}}{{c}}{{PC+GVS}} \\\\")
             file.write("\n")
             file.write(" & & & & & & & & core & shell & total \\\\")
             file.write("\n")
