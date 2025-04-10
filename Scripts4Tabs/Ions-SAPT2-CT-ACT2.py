@@ -36,13 +36,13 @@ def dict_to_list_of_lists(data):
     return rows
 
 
-headers = ["Ions", "r$_{min}$", "SAPT", "JC", "Walz {\em et al.}", "GC+PGV", "PC+GVS"]
+headers = ["Ions", "r$_{min}$", "SAPT", "PC", "Walz {\em et al.}", "GC+PGV", "PC+GVS"]
 
 
 table_string= tabulate(dict_to_list_of_lists(sapt2), headers, tablefmt="latex_raw")
 
 
-caption= "\\caption{Minimum energy distance (\AA) between ions and electrostatic energies from SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set, the Joung-Cheatham (JC) model~\cite{Joung2008a}, Walz {\em et al.} model with a Gaussian charge distribution~\cite{Walz2018a}, and the ACT/PC+GVS model consisting of a point charge and a Drude particle with a Gaussian charge. The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
+caption= "\\caption{Minimum energy distance (\AA) between ions and electrostatic energies from SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set, for point charges (PC), the Walz {\em et al.} model with a Gaussian charge distribution~\cite{Walz2018a}, and the ACT models GC+PVG and PC+GVS consisting of a point charge and virtual site with a Gaussian charge (K$^+$ and halide ions only) and a Drude particle with a Gaussian charge (PC+GVS only). The RMSD and MSE were calculated with respect to the SAPT2+(CCD)$\delta$MP2 with the aug-cc-pVTZ basis set electrostatic energy. }"
 
 
 label = "\\label{tab:sapt2_ions}"
@@ -74,16 +74,15 @@ file_path = "Ions-sapt2-JC-Walz2018a-ACT.tex"
 with open(file_path, "w") as file:
     file.write("\\begin{table}[ht]\n")
     file.write("\\centering\n")
-    file.write(caption + "\n" + label + "\n" + table_with_rmsd + "\n")
+    file.write(caption + "\n" + label + "\n")
+    for line in table_with_rmsd:
+        file.write(line)
+    file.write("\n")
     file.write("\\end{tabular}\n")
     file.write("\\end{table}\n")
+    
+print("Please fix %s manually to correct output." % file_path)
 
-
-print("\\begin{table}[ht]")
-print("\\centering")
-print(table_with_rmsd + "\n" + caption)
-print("\\end{tabular}")
-print("\\end{table}")
 
 
 
