@@ -110,7 +110,7 @@ def save_data_as_latex(data, output_dir):
         for compound in compounds_of_interest:
             file.write(r"\begin{sidewaystable}")
             file.write("\n")
-            file.write(fr"\\caption{{{{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (GC+PGVS).  Partial charges for the PC and GC models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy  (ei) from the SAPT2+(CCD)\$\\delta\$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}}}}")
+            file.write(r"\caption{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (GC+PGVS).  Partial charges for the PC and GC models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy  (ei) from the SAPT2+(CCD)-$\delta$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}")
             file.write("\n")
             file.write("\\hspace{-1cm}\n")
             file.write("\\begin{tabular}{lcccccccccccccccc}\n")
@@ -161,9 +161,7 @@ def save_data_as_latex(data, output_dir):
             if isinstance(value, tuple) else round(value, 6) if isinstance(value, (int, float)) else value
             for value in data["ACM-H"].get(compound, [])
             ]
-            #acm_p_data =[round(value,2) for value in data["ACM-P"].get(compound, [])]
-            #acm_g_data =[round(value,2) for value in data["ACM-G"].get(compound, [])]
-            #acm_h_data =[round(value,2) for value in data["ACM-H"].get(compound, [])]
+
 
             for item in esp_data:
                 atom_type, esp_value, _, _, _ = item
