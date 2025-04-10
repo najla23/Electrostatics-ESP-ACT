@@ -176,7 +176,8 @@ def save_data_as_latex(data, output_dir):
                 core_value = acm_h_value[1] if acm_h_value[1] != "N/A" else "N/A"
                 shell_value = acm_h_value[2] if acm_h_value[2] != "N/A" else "N/A"
                 total_value = acm_h_value[3] if acm_h_value[3] != "N/A" else "N/A"
-
+                if atom_type in ["Cl-", "K+"] :
+                    continue
                 file.write(f" {atom_type} & {esp_value} & {acm_p_value[1]} & {acm_p2_value[1]} & {acm_g_value[1]} &  {acm_g2_value[1]} & {acm_v_value[1]} &  {acm_n_value[1]} & {core_value} & {shell_value} & {total_value} \\\\\n")
                 
             if compound == "water#water" and acm_h_data:
