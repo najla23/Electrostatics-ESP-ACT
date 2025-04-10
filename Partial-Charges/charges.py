@@ -7,7 +7,7 @@ compounds_of_interest = [
     "methylammonium#potassium",
     "acetate#potassium",
     "formate#potassium",
-    "water#water"
+    "water#potassium"
 ]
 
 
@@ -133,7 +133,7 @@ def save_data_as_latex(data, output_dir):
             compound2 = compound.split('#')[0]
             file.write(r"\begin{sidewaystable}")
             file.write("\n")
-            file.write(r"\caption{Partial charges for " +compound2+ " from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (PC+GVS).  Partial charges for the PC, GC, and GC+PGV models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy (ei) from the SAPT2+(CCD)-$\delta$MP2 method with an augmented triple-zeta basis set are reported. Partial charges for the PC+GVS model, trained on the electrostatic and induction energies are also provided.}")
+            file.write(r"\caption{Partial charges for " +compound2+ " from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (PC+GVS).  Partial charges for the PC, GC, and GC+PGV models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy (ei) from the SAPT2+(CCD)-$\delta$MP2 method with the aug-cc-pVTZ basis set are reported. Partial charges for the PC+GVS model, trained on the electrostatic and induction energies are also provided.}")
             file.write("\n")
             file.write("\\hspace{-1cm}\n")
             file.write("\\begin{tabular}{lcccccccccccccccc}\n")
@@ -202,7 +202,7 @@ def save_data_as_latex(data, output_dir):
                     continue
                 file.write(f" {atom_type} & {esp_value} & {acm_p_value[1]} & {acm_p2_value[1]} & {acm_g_value[1]} &  {acm_g2_value[1]} & {acm_v_value[1]} &  {acm_n_value[1]} & {core_value} & {shell_value} & {total_value} \\\\\n")
                 
-            if compound == "water#water" and acm_h_data:
+            if compound == "water#potassium" and acm_h_data:
                  file.write(f" v3bw & 0 & 0 & 0 & 0 & 0 & {v3bw_allG} & {v3bw_elG} & {v3bw} & 0 & {v3bw} \\\\\n")
                  
             file.write("\\hline\n")
