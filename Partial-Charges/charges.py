@@ -10,7 +10,29 @@ compounds_of_interest = [
     "water#water"
 ]
 
-v3bw = -1.0336
+
+
+
+def extract_v3bw_value(log_file):
+    with open(log_file, 'r') as file:
+        for line in file:
+            if 'v3bw' in line and line.strip().startswith('|'):
+                parts = [col.strip() for col in line.strip().split('|') if col.strip()]
+                if len(parts) >= 3:
+                    try:
+                        return float(parts[2])
+                    except ValueError:
+                        continue
+    return None
+
+
+v3bw = extract_v3bw_value('tune_ff-elec-h.log')
+v3bw_allG = extract_v3bw_value('tune_ff-allelec-n.log')
+v3bw_elG = extract_v3bw_value('tune_ff-elec-v.log')
+
+
+
+
 
 def extract_data_from_log(log_files):
     data = {
@@ -111,12 +133,12 @@ def save_data_as_latex(data, output_dir):
             compound2 = compound.split('#')[0]
             file.write(r"\begin{sidewaystable}")
             file.write("\n")
-            file.write(r"\caption{Partial charges for " +compound2+ " from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (GC+PGVS).  Partial charges for the PC and GC models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy  (ei) from the SAPT2+(CCD)-$\delta$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}")
+            file.write(r"\caption{Partial charges for " +compound2+ " from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (PC+GVS).  Partial charges for the PC, GC, and GC+PGV models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy (ei) from the SAPT2+(CCD)-$\delta$MP2 method with an augmented triple-zeta basis set are reported. Partial charges for the PC+GVS model, trained on the electrostatic and induction energies are also provided.}")
             file.write("\n")
             file.write("\\hspace{-1cm}\n")
             file.write("\\begin{tabular}{lcccccccccccccccc}\n")
             file.write("\\hline\n")
-            file.write(fr" Atom & ESP & PC$_{{e}}$ & PC$_{{ei}}$ & GC$_{{e}}$ & GC$_{{ei}}$ & GC+PGV$_{{e}}$ & GC+PGV$_{{ei}}$ & \multicolumn{{3}}{{c}}{{GC+PGVS}} \\\\")
+            file.write(fr" Atom & ESP & PC$_{{e}}$ & PC$_{{ei}}$ & GC$_{{e}}$ & GC$_{{ei}}$ & GC+PGV$_{{e}}$ & GC+PGV$_{{ei}}$ & \multicolumn{{3}}{{c}}{{PC+GVS}} \\\\")
             file.write("\n")
             file.write(" & & & & & & & & core & shell & total \\\\")
             file.write("\n")
@@ -181,7 +203,7 @@ def save_data_as_latex(data, output_dir):
                 file.write(f" {atom_type} & {esp_value} & {acm_p_value[1]} & {acm_p2_value[1]} & {acm_g_value[1]} &  {acm_g2_value[1]} & {acm_v_value[1]} &  {acm_n_value[1]} & {core_value} & {shell_value} & {total_value} \\\\\n")
                 
             if compound == "water#water" and acm_h_data:
-                 file.write(f" v3bw & 0 & 0 & 0 & 0 & 0 & 0 & 0 & {v3bw} & 0 & {v3bw} \\\\\n")
+                 file.write(f" v3bw & 0 & 0 & 0 & 0 & 0 & {v3bw_allG} & {v3bw_elG} & {v3bw} & 0 & {v3bw} \\\\\n")
                  
             file.write("\\hline\n")
             file.write("\\end{tabular}\n")
