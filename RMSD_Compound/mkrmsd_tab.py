@@ -33,7 +33,7 @@ if __name__ == "__main__":
     with open(texfn, "w") as outf:
         outf.write("\\begin{landscape}\n")
         outf.write("\\begin{longtable}{lccccc}\n")
-        outf.write("\\caption{Root mean square deviation (kJ/mol) from SAPT electrostatics per compound dimer for the different ACT models. N is the number of conformations of each dimer used. Compound dimers used in training are printed in bold font.}\\\\\n")
+        outf.write("\\caption{Root mean square deviation (kJ/mol) from SAPT electrostatics per compound dimer for the different ACT models. N is the number of conformations of each dimer used. Compound dimers used in training are printed in {\\bf bold font}.}\\\\\n")
         outf.write("\\hline\n")
         outf.write("Dimer & N ")
         for md in alldata.keys():
