@@ -108,13 +108,17 @@ def save_data_as_latex(data, output_dir):
 
     with open(combined_output_file, 'w') as file:
         for compound in compounds_of_interest:
-            file.write("\\begin{sidewaystable}\n")
-            file.write(fr"\\caption{{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (GC+PGVS).  Partial charges for the PC and GC models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy  (ei) from the SAPT2+(CCD)\$\\delta\$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}}\n")
+            file.write(r"\begin{sidewaystable}")
+            file.write("\n")
+            file.write(fr"\\caption{{{{Partial charges for {compound} from ESP and from ACT models, point charge (PC), Gaussian charge (GC), point core+Gaussian vsite (GC+PGV), and point charge + Gaussian vsite and shell (GC+PGVS).  Partial charges for the PC and GC models trained on either electrostatic energy (e) or the sum of the electrostatic and induction energy  (ei) from the SAPT2+(CCD)\$\\delta\$MP2 method with an augmented triple-zeta basis set, are reported. Partial charges for the PC+GS model, trained on the sum of the electrostatic and induction energy, are also provided.}}}}")
+            file.write("\n")
             file.write("\\hspace{-1cm}\n")
             file.write("\\begin{tabular}{lcccccccccccccccc}\n")
             file.write("\\hline\n")
-            file.write(fr" Atom & ESP & PC$_{{e}}$ & PC$_{{ei}}$ & GC$_{{e}}$ & GC$_{{ei}}$ & GC+PGV$_{{e}}$ & GC+PGV$_{{ei}}$ & \multicolumn{{3}}{{c}}{{GC+PGVS}} \\\\ \n")
-            file.write(" & & & & & & & & core & shell & total \\\\\n")
+            file.write(fr" Atom & ESP & PC$_{{e}}$ & PC$_{{ei}}$ & GC$_{{e}}$ & GC$_{{ei}}$ & GC+PGV$_{{e}}$ & GC+PGV$_{{ei}}$ & \multicolumn{{3}}{{c}}{{GC+PGVS}} \\\\")
+            file.write("\n")
+            file.write(" & & & & & & & & core & shell & total \\\\")
+            file.write("\n")
             file.write("\\hline\n")
 
             esp_data = [
