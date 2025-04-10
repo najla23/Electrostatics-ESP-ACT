@@ -46,11 +46,11 @@ with open(file_path, "w") as file:
 
     file.write("\\begin{table}[ht]\n")
     file.write("\\centering\n")
-    file.write("\\caption{Electrostatic energy (kJ/mol) between alkali halides or water (oxygen) and amino acid side chain analogs, acetate (oxygen), formate (oxygen), methylammonium (nitrogen), ethylammonium (nitrogen) from SAPT2, the Generalized Amber Force Field~\\cite{Wang2004a} with either RESP~\\cite{Bayly1993a} or BCC~\\cite{Jakalian2000a} charges, and two models generated here using the ACT.}\n")
+    file.write("\\caption{Electrostatic energy (kJ/mol) between alkali halides or water (oxygen) and amino acid side chain analogs, formate (oxygen), acetate (oxygen), methylammonium (nitrogen), ethylammonium (nitrogen) from SAPT2+(CCD)$\\delta$MP2/aug-cc-pVTZ, and charges determined using either RESP~\\cite{Bayly1993a} or BCC~\\cite{Jakalian2000a}, as well as two models generated using the ACT.}\n")
     file.write("\label{tab:ac_ma_ions}\n")
     file.write("\\begin{tabular}{lcccccc} \n")
     file.write("\\hline \n")
-    file.write("Ion & r$_{min}$ & SAPT & GAFF$_{RESP}$ & GAFF$_{BCC}$ & GC+PGV & PC+GVS \\\\\n")
+    file.write("Ion & r$_{min}$ & SAPT & RESP & BCC & GC+PGV & PC+GVS \\\\\n")
     file.write("\\hline \n")
 
 
