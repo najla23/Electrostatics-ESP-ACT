@@ -202,7 +202,7 @@ def save_data_as_latex(data, output_dir):
     print("LaTeX file generated successfully!")
 
 log_files = [
-    "train_ff-ESP.log", "tune_ff-elec-p.log", "tune_ff-allelec-i.log", "tune_ff-elec-g.log", 
+    "ESP.log", "tune_ff-elec-p.log", "tune_ff-allelec-i.log", "tune_ff-elec-g.log", 
     "tune_ff-allelec-s.log", "tune_ff-elec-v.log", "tune_ff-allelec-n.log", "tune_ff-elec-h.log"
 ]
 
